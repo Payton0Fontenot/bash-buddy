@@ -1,4 +1,5 @@
 *{box-sizing:border-box}
+[hidden]{display:none!important}
 :root{--pink:#D6006F;--yellow:#FFD60A;--ink:#1B1030;--cream:#FFF8EE;--c1:var(--pink);--c2:var(--yellow);--tx:#fff}
 body{margin:0;font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--ink);line-height:1.5}
 a{color:inherit;text-decoration:none}
