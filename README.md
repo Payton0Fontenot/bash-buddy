@@ -22,6 +22,9 @@ The cart page sends the cart to `api/checkout.js`, which creates a Stripe Checko
 1. In the Stripe Dashboard, create a Product and a Price for each item you sell (12 boxes, 4 shared add-ons, and the recommended add-on for each theme).
 2. Copy each Price ID (starts with `price_`) into `api/_prices.js`. Items left empty cannot be bought.
 3. In Vercel, open your project, then Settings, then Environment Variables, and add `STRIPE_SECRET_KEY` with your secret key (starts with `sk_test_` for testing). Never put the secret key in any file or in chat.
-4. Optional: create a shipping rate in Stripe (Standard shipping), and add its ID (starts with `shr_`) as the environment variable `STRIPE_SHIPPING_RATE_ID`.
+4. Shipping is included in the box price, so leave the optional `STRIPE_SHIPPING_RATE_ID` environment variable unset.
 5. Redeploy, add a box to the cart, check out with Stripe's test card 4242 4242 4242 4242, and confirm the order shows in your Stripe test dashboard.
 6. For real sales, repeat with live products, live Price IDs, and your live secret key. Taxes and shipping rules are set in Stripe.
+
+## Look
+The site uses a Y2K glitter look: signature pink gradients, Bowlby One for headlines, and Sora for body text. Empty photo spots show illustrated templates until you add a real .jpg with the matching name in `images/`.
