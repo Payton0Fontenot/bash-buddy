@@ -9,6 +9,17 @@ var p=b.getAttribute('data-add').split('|'),c=load(),f=c.filter(function(i){retu
 if(f){f.q++;}else{c.push({id:p[0],name:p[1],q:1});}
 save(c);sync();say('Added to your cart.');});});
 document.querySelectorAll('[data-demo]').forEach(function(b){b.addEventListener('click',function(){say('Checkout is not connected yet. This is a preview.');});});
+var cb=document.getElementById('checkout-btn');
+if(cb){cb.addEventListener('click',function(){
+var m=document.getElementById('checkout-msg'),c=load();
+if(!c.length){m.textContent='Your cart is empty.';return;}
+cb.disabled=true;m.textContent='Taking you to secure checkout...';
+fetch('/api/checkout',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({items:c.map(function(i){return {id:i.id,q:i.q};})})})
+.then(function(r){return r.json().then(function(d){if(!r.ok||!d.url)throw new Error(d.error||'bad');return d;});})
+.then(function(d){window.location.href=d.url;})
+.catch(function(e){cb.disabled=false;m.textContent=(e&&e.message&&e.message!=='bad')?e.message:'Checkout could not start. Please try again.';});
+});}
+if(document.body.hasAttribute('data-clear-cart')){save([]);}
 var list=document.getElementById('cart-list');
 function render(){
 if(!list)return;

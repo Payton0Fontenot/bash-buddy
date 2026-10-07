@@ -9,19 +9,11 @@
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@700;800&amp;family=DM+Sans:wght@400;500;700&amp;display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 64 64%27%3E%3Crect width=%2764%27 height=%2764%27 rx=%2716%27 fill=%27%23D6006F%27/%3E%3Ctext x=%2732%27 y=%2745%27 font-size=%2740%27 text-anchor=%27middle%27 font-family=%27Arial%27 font-weight=%27700%27 fill=%27white%27%3EB%3C/text%3E%3C/svg%3E">
-<script async src="https://js.stripe.com/v3/buy-button.js"></script>
-<style>
-#stripe-dialog{border:4px solid #1B1030;border-radius:24px;padding:0;width:min(92vw,520px);max-height:90vh;overflow:auto;background:#FFF8EE;color:#1B1030}
-#stripe-dialog::backdrop{background:rgba(27,16,48,.6)}
-#stripe-dialog .dlg{padding:28px;display:flex;flex-direction:column;gap:16px}
-#stripe-dialog h2{font-size:28px}
-#stripe-dialog .dlg-x{align-self:flex-end;font:inherit;font-weight:700;min-height:44px;padding:8px 20px;border-radius:999px;border:3px solid #1B1030;background:#fff;color:#1B1030;cursor:pointer}
-</style>
 </head>
 <body style="--c1:#D6006F;--c2:#FFD60A;--tx:#FFFFFF">
 <header class="nav dark"><a class="logo" href="index.html">Bash Buddy Co.</a><nav class="links" aria-label="Main"><a href="shop.html">Shop</a><a href="about.html">About</a><a href="faq.html">FAQ</a><a href="cart.html">Cart (<span data-cart-count>0</span>)</a><a class="pill" href="signup.html">Get early access</a></nav></header>
 <main>
-<section class="thero"><div><span class="kicker">Party box</span><h1>21st Birthday</h1><p class="tag">The big night, ready to go.</p><p>Make the milestone feel like a moment, with a photo-ready backdrop and a host card that keeps the night on track.</p><div class="buy"><button class="btn" type="button" data-checkout aria-haspopup="dialog">Add to cart</button><span>[PRICE]</span></div></div>
+<section class="thero"><div><span class="kicker">Party box</span><h1>21st Birthday</h1><p class="tag">The big night, ready to go.</p><p>Make the milestone feel like a moment, with a photo-ready backdrop and a host card that keeps the night on track.</p><div class="buy"><button class="btn" type="button" data-add="21st-birthday|21st Birthday party box">Add to cart</button><span>[PRICE]</span></div></div>
 <div style="display:flex;justify-content:center"><aside class="glance"><h2>At a glance</h2><div><b>Serves:</b> about 8 guests</div><div><b>Game or craft:</b> Birthday trivia cards about the guest of honor</div><div><b>Big moment:</b> Cut the cupcakes under the backdrop for the big photo.</div><div><b>Menu ideas:</b> Cupcakes, sparkling mocktails, and a snack board</div></aside></div></section>
 <section class="sec"><h2>See the box</h2><div class="row"><figure class="photo" style="aspect-ratio:4/3"><img src="images/21st-birthday-box.jpg" alt="21st Birthday party box with everything laid out"><figcaption class="ph"><b>Photo goes here</b><span>The 21st Birthday box, laid out</span><code>images/21st-birthday-box.jpg</code></figcaption></figure><figure class="photo" style="aspect-ratio:4/3"><img src="images/21st-birthday-setup.jpg" alt="21st Birthday decor set up in a dorm room"><figcaption class="ph"><b>Photo goes here</b><span>Set up in a dorm or apartment</span><code>images/21st-birthday-setup.jpg</code></figcaption></figure><figure class="photo" style="aspect-ratio:4/3"><img src="images/21st-birthday-party.jpg" alt="Friends at a 21st Birthday party"><figcaption class="ph"><b>Photo goes here</b><span>The party in action</span><code>images/21st-birthday-party.jpg</code></figcaption></figure></div></section>
 <section class="sec" id="inside"><h2>What's inside the box</h2><div class="row"><div class="card"><h3>Table setting</h3><p>Pink and gold plates, cups, napkins, and a table runner</p></div><div class="card"><h3>Balloon garland</h3><p>Pre-sorted by color so it goes up in minutes</p></div><div class="card"><h3>Backdrop and banner</h3><p>A photo wall and banner for the group shot</p></div><div class="card"><h3>Cupcake extras</h3><p>Candles, topper, and a stand liner sized for store-bought cupcakes</p></div><div class="card"><h3>Photo props</h3><p>Signs, glasses, and a sash for the guest of honor</p></div><div class="card"><h3>Dorm-friendly hanging kit</h3><p>Damage-free hooks, removable tape, and strips so you get your deposit back</p></div></div></section>
@@ -30,26 +22,6 @@
 <p style="padding:0 5vw 48px"><a class="btn dk" href="shop.html">Back to all themes</a></p>
 </main>
 <footer class="foot"><div class="fcol"><div class="logo">Bash Buddy Co.</div><p>Themed party boxes for easy hosting.</p><div class="social"><a data-social="instagram" hidden>Instagram</a><a data-social="tiktok" hidden>TikTok</a><a data-social="email" hidden>Email us</a></div></div><nav class="fcol" aria-label="Footer"><a href="shop.html">Shop</a><a href="about.html">About</a><a href="faq.html">FAQ</a><a href="contact.html">Contact</a></nav><nav class="fcol" aria-label="Policies"><a href="shipping-returns.html">Shipping and returns</a><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a></nav><div class="fcol note">Alcohol is not included. Drink kits contain recipe cards and supplies only, and cocktail items are for guests 21+.</div></footer>
-<dialog id="stripe-dialog" aria-labelledby="stripe-title"><div class="dlg"><button type="button" class="dlg-x" data-close>Close</button><h2 id="stripe-title">Checkout: 21st Birthday party box</h2><p>Secure checkout by Stripe.</p><div id="stripe-slot"></div></div></dialog>
-<template id="stripe-tpl">
-<stripe-buy-button
-  buy-button-id="buy_btn_1UNj0YPcDLOMUTAQxqoCXtVB"
-  publishable-key="pk_test_51UNhcXPcDLOMUTAQapPIAfAWzhijx3IPLBOhX9y4o1JbSB29Zb6bzInCkdRVKNgK9GQZB9mmhvASqPzJ0gifX6Cu00FFQxIrsB"
->
-</stripe-buy-button>
-</template>
-<script>
-(function(){
-var d=document.getElementById('stripe-dialog'),b=document.querySelector('[data-checkout]'),slot=document.getElementById('stripe-slot'),loaded=false;
-function close(){if(d.close){d.close();}else{d.removeAttribute('open');}}
-b.addEventListener('click',function(){
-if(!loaded){slot.appendChild(document.getElementById('stripe-tpl').content.cloneNode(true));loaded=true;}
-if(d.showModal){d.showModal();}else{d.setAttribute('open','');}
-});
-d.querySelector('[data-close]').addEventListener('click',close);
-d.addEventListener('click',function(ev){if(ev.target===d){close();}});
-})();
-</script>
 <div id="toast" role="status" aria-live="polite"></div>
 <script src="site-config.js"></script>
 <script src="app.js"></script>
