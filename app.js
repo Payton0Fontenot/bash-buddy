@@ -221,8 +221,28 @@ var chips=document.querySelectorAll('.chip[data-cat]');
 chips.forEach(function(c){c.addEventListener('click',function(){
 chips.forEach(function(x){x.setAttribute('aria-pressed',x===c?'true':'false');});
 var cat=c.getAttribute('data-cat');
-document.querySelectorAll('.tcard').forEach(function(card){card.hidden=!(cat==='All'||card.getAttribute('data-cat')===cat);});
+document.querySelectorAll('.tcard,.ecard[data-cat]').forEach(function(card){card.hidden=!(cat==='All'||card.getAttribute('data-cat')===cat);});
 });});
+document.querySelectorAll('[data-scroll]').forEach(function(b){var t=document.getElementById(b.getAttribute('data-target'));if(!t||t.__loop)return;t.__loop=1;
+var orig=[].slice.call(t.children),n=orig.length,tm;
+function mk(){var f=document.createDocumentFragment();orig.forEach(function(c){var k=c.cloneNode(true);k.setAttribute('aria-hidden','true');k.setAttribute('tabindex','-1');f.appendChild(k);});return f;}
+t.insertBefore(mk(),t.firstChild);t.appendChild(mk());
+function gap(){return parseInt(getComputedStyle(t).columnGap,10)||28;}
+function cw(){return orig[0].offsetWidth+gap();}
+function setW(){return cw()*n;}
+function jump(x){t.style.scrollBehavior='auto';t.style.scrollSnapType='none';t.scrollLeft=x;void t.offsetWidth;t.style.scrollBehavior='';t.style.scrollSnapType='';}
+function home(){jump(setW());}
+function norm(){var w=setW(),x=t.scrollLeft;if(x<w*0.5)jump(x+w);else if(x>w*1.5)jump(x-w);}
+function step(){var n=Math.floor((t.clientWidth+gap())/cw());return cw()*Math.max(1,n-1);}
+var anim=0,tgt=0,raf=0;
+function tick(){var w=setW(),x=t.scrollLeft,d=tgt-x;
+if(Math.abs(d)<0.6){t.scrollLeft=tgt;anim=0;t.style.scrollSnapType='';t.style.scrollBehavior='';norm();return;}
+x+=d*0.12+(d>0?0.4:-0.4);t.scrollLeft=x;var nx=t.scrollLeft;
+if(nx<w*0.5){t.scrollLeft=nx+w;tgt+=w;}else if(nx>w*1.5){t.scrollLeft=nx-w;tgt-=w;}
+raf=requestAnimationFrame(tick);}
+home();window.addEventListener('resize',home);
+t.addEventListener('scroll',function(){clearTimeout(tm);tm=setTimeout(norm,140);});
+document.querySelectorAll('[data-scroll][data-target="'+t.id+'"]').forEach(function(btn){btn.addEventListener('click',function(){if(!anim){norm();tgt=t.scrollLeft;}tgt+=Number(btn.getAttribute('data-scroll'))*step();if(!anim){anim=1;t.style.scrollSnapType='none';t.style.scrollBehavior='auto';raf=requestAnimationFrame(tick);}});});});
 sync();render();
 if(/\/cart(\.html)?$/.test(location.pathname))openCart();
 })();
