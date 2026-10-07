@@ -21,8 +21,8 @@ module.exports = {
   // Add-ons shared by every theme
   addons: {
     birthday: "price_1UNxEQPcDLOMUTAQmptgAFes", // Birthday add-on (sash, crown, small gift)
-    guests4: "price_1UNxomPcDLOMUTAQOeJTndyg", // Expand the fun, +4 guests ($25)
-    guests8: "price_1UNxphPcDLOMUTAQiRbgDDlY", // Expand the fun, +8 guests ($40)
+    guests4: "price_1UNxomPcDLOMUTAQOeJTndyg", // Guest pack, +4 guests ($25)
+    guests8: "price_1UNxphPcDLOMUTAQiRbgDDlY", // Guest pack, +8 guests ($40)
     guests4Activity: "price_1UNxvEPcDLOMUTAQubu2GHww", // +4 guests for Paint and Sip and Slumber Party ($35)
     guests8Activity: "price_1UNxxjPcDLOMUTAQh7c5tfN6", // +8 guests for Paint and Sip and Slumber Party ($60)
     favors: "price_1UNxIKPcDLOMUTAQgqDkCMdk",   // Guest favors set

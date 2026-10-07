@@ -4,11 +4,23 @@ function say(m){t.textContent=m;t.className='on';clearTimeout(tm);tm=setTimeout(
 function load(){try{return (JSON.parse(localStorage.getItem(KEY))||[]).filter(function(i){return !(/-3$/.test(i.id)&&!i.opts);});}catch(e){return [];}}
 function save(c){try{localStorage.setItem(KEY,JSON.stringify(c));}catch(e){}}
 function sync(){var n=load().reduce(function(a,i){return a+i.q;},0);document.querySelectorAll('[data-cart-count]').forEach(function(el){el.textContent=n;});}
+
+var dr=document.createElement('div');dr.innerHTML='<div id="cdr-ov" hidden></div><aside id="cdr" role="dialog" aria-modal="true" aria-label="Your cart" aria-hidden="true"><div class="cdr-h"><h2>Your cart</h2><button type="button" id="cdr-x" aria-label="Close cart">&times;</button></div><div class="cdr-b"><div id="cart-empty"><p>Your cart is empty.</p><a class="btn dk" href="shop.html">Shop all themes</a></div><div id="cart-list"></div></div><div class="cdr-f" id="cart-sum" hidden><p class="total" id="cart-total"></p><p class="fine">Shipping is included in every box price. Your final total is confirmed on the secure Stripe checkout page.</p><button class="btn dk" type="button" id="checkout-btn">Checkout</button><p class="msg" id="checkout-msg" role="status" aria-live="polite"></p></div></aside>';
+while(dr.firstChild)document.body.appendChild(dr.firstChild);
+var cdr=document.getElementById('cdr'),cov=document.getElementById('cdr-ov'),lastF=null;
+function openCart(){lastF=document.activeElement;render();cdr.classList.add('on');cdr.setAttribute('aria-hidden','false');cov.hidden=false;document.documentElement.classList.add('cdr-open');setTimeout(function(){document.getElementById('cdr-x').focus();},50);}
+function closeCart(){cdr.classList.remove('on');cdr.setAttribute('aria-hidden','true');cov.hidden=true;document.documentElement.classList.remove('cdr-open');if(lastF&&lastF.focus&&document.body.contains(lastF))lastF.focus();}
+document.getElementById('cdr-x').addEventListener('click',closeCart);cov.addEventListener('click',closeCart);
+document.addEventListener('keydown',function(e){if(e.key==='Escape'&&cdr.classList.contains('on'))closeCart();});
+document.querySelectorAll('a[href="cart.html"]').forEach(function(l){l.addEventListener('click',function(e){e.preventDefault();openCart();});});
+var DESC={1:'Mini treats, stickers, and small extras for 8 guests',2:'Recipe cards, labels, stir sticks, and garnish picks',4:'Trash bags, wipes, a bin liner, and a checklist',5:'Sash, crown, and a small gift for the host',6:'Plates, cups, and supplies for 4 more guests',7:'Plates, cups, and supplies for 8 more guests'};
+var BOXINC={'paint-and-sip':'Includes tableware, table covers, and a canvas, paints, and brushes for every guest.','slumber-party':'Includes tableware, fairy lights, a photo backdrop, and a sleep mask and spa extras for every guest.'};
+function descOf(it){if(it.opts)return '';if(!/-\d$/.test(it.id))return 'Serves 8. Shipping included. '+(BOXINC[it.id]||'Includes tableware, backdrop, balloon garland, and a game or activity.');var n=Number(it.id.slice(-1)),act=/^(paint-and-sip|slumber-party)-/.test(it.id),d=DESC[n]||'';if(n>=6&&act)d=d.replace('Plates, cups, and supplies','Plates, cups, supplies, and full activity materials');return d;}
 document.querySelectorAll('[data-add]').forEach(function(b){b.addEventListener('click',function(){
 var p=b.getAttribute('data-add').split('|'),c=load(),f=c.filter(function(i){return i.id===p[0];})[0];
 var ex=b.getAttribute('data-excl');if(ex){c=c.filter(function(i){return i.id!==ex;});f=c.filter(function(i){return i.id===p[0];})[0];}
 if(f){if(!ex)f.q++;}else{c.push({id:p[0],name:p[1],q:1});}
-save(c);sync();var th=p[0].replace(/-\d$/,'');say(/-\d$/.test(p[0])&&!c.some(function(i){return i.id===th;})?'Added. This add-on needs the '+p[1].split(': ')[0]+' party box to check out.':'Added to your cart.');});});
+save(c);sync();var th=p[0].replace(/-\d$/,'');openCart();});});
 document.querySelectorAll('[data-demo]').forEach(function(b){b.addEventListener('click',function(){say('Checkout is not connected yet. This is a preview.');});});
 var bd=document.getElementById('banner-dlg');
 if(bd){var bf=document.getElementById('banner-form');
@@ -19,7 +31,7 @@ var g=function(n){return (bf.elements[n].value||'').trim();},txt=g('text');
 if(!txt){document.getElementById('b-msg').textContent='Please add a name or message.';return;}
 var o={template:g('template'),text:txt,line2:g('line2'),colors:g('colors'),date:g('date'),notes:g('notes')},c=load();
 c.push({id:bf.getAttribute('data-slug')+'-3',name:bf.getAttribute('data-name')+': Custom banner',q:1,opts:o});
-save(c);sync();bf.reset();bd.close();var sl=bf.getAttribute('data-slug');say(c.some(function(i){return i.id===sl;})?'Banner added to your cart.':'Banner added. Add the '+bf.getAttribute('data-name')+' party box to check out.');});
+save(c);sync();bf.reset();bd.close();openCart();});
 var bx=document.getElementById('b-x');if(bx)bx.addEventListener('click',function(){bd.close();});
 bd.addEventListener('click',function(e){var r=bd.getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)bd.close();});
 (function(){var p=document.getElementById('b-prev');if(!p)return;var f=bf.elements,fl=document.getElementById('b-flags'),bo=document.getElementById('b-body'),h1=document.getElementById('b-h1'),h2=document.getElementById('b-h2');
@@ -91,7 +103,7 @@ var n=document.createElement('span');n.textContent=it.q;n.setAttribute('aria-liv
 q.appendChild(btn('+','Increase quantity of '+it.name,function(){it.q++;save(c);sync();render();},'',it.q>=cap));}
 var rb=btn('Remove','Remove '+it.name,rm,'rmlink');var pr=document.createElement('span');pr.className='pr';pr.textContent='$'+(unit(it)*it.q);if(it.q>1){var ea=document.createElement('small');ea.textContent='$'+unit(it)+' each';pr.appendChild(ea);}
 if(it.opts){var sm=document.createElement('small');sm.textContent=[it.opts.template,'Text: '+it.opts.text,it.opts.line2,it.opts.colors].filter(Boolean).join(' | ');nm.appendChild(sm);}
-r.appendChild(nm);r.appendChild(q);r.appendChild(pr);r.appendChild(rb);return r;}
+var ds=descOf(it);if(ds){var de=document.createElement('small');de.className='desc';de.textContent=ds;nm.appendChild(de);}r.appendChild(nm);var ctl=document.createElement('div');ctl.className='ctl';if(q.children.length>1)ctl.appendChild(q);ctl.appendChild(pr);ctl.appendChild(rb);r.appendChild(ctl);return r;}
 var tot=c.reduce(function(s,i){return s+unit(i)*i.q;},0),te=document.getElementById('cart-total');if(te)te.textContent='Estimated total: $'+tot;
 var order=[];c.forEach(function(i){var t=themeOf(i);if(order.indexOf(t)<0)order.push(t);});
 order.forEach(function(t){
@@ -212,4 +224,5 @@ var cat=c.getAttribute('data-cat');
 document.querySelectorAll('.tcard').forEach(function(card){card.hidden=!(cat==='All'||card.getAttribute('data-cat')===cat);});
 });});
 sync();render();
+if(/\/cart(\.html)?$/.test(location.pathname))openCart();
 })();

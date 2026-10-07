@@ -26,7 +26,7 @@ function priceFor(id) {
   const n = Number(m[2]);
   if (n === 0) return prices.extras[slug] || "";
   if (n === 6 || n === 7) {
-    // Expand the fun: extra guests. Activity boxes use their own prices because they need more materials.
+    // Guest packs: extra guests. Activity boxes use their own prices because they need more materials.
     const activity = ACTIVITY.includes(slug) ? "Activity" : "";
     const gk = (n === 6 ? "guests4" : "guests8") + activity;
     return prices.boxes[slug] !== undefined ? prices.addons[gk] || "" : "";
