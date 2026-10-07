@@ -5,8 +5,8 @@
 module.exports = {
   // Party boxes, one per theme
   boxes: {
-    "21st-birthday": "",
-    "friendsgiving": "",
+    "21st-birthday": "price_1UNiqkPcDLOMUTAQDqXJH82o",
+    "friendsgiving": "price_1UNlIkPcDLOMUTAQBZ5gv7Sn",
     "christmas": "price_1UNlNDPcDLOMUTAQ2WS4beB0",
     "halloween": "",
     "get-wild": "",
