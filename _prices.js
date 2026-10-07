@@ -7,7 +7,7 @@ module.exports = {
   boxes: {
     "21st-birthday": "",
     "friendsgiving": "",
-    "christmas": "",
+    "christmas": "price_1UNlNDPcDLOMUTAQ2WS4beB0",
     "halloween": "",
     "get-wild": "",
     "cowgirl-western": "",
