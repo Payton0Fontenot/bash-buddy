@@ -1,13 +1,14 @@
 (function(){
 var t=document.getElementById('toast'),tm,KEY='bbc_cart';
 function say(m){t.textContent=m;t.className='on';clearTimeout(tm);tm=setTimeout(function(){t.className='';},2600);}
-function load(){try{return JSON.parse(localStorage.getItem(KEY))||[];}catch(e){return [];}}
+function load(){try{return (JSON.parse(localStorage.getItem(KEY))||[]).filter(function(i){return !(/-3$/.test(i.id)&&!i.opts);});}catch(e){return [];}}
 function save(c){try{localStorage.setItem(KEY,JSON.stringify(c));}catch(e){}}
 function sync(){var n=load().reduce(function(a,i){return a+i.q;},0);document.querySelectorAll('[data-cart-count]').forEach(function(el){el.textContent=n;});}
 document.querySelectorAll('[data-add]').forEach(function(b){b.addEventListener('click',function(){
 var p=b.getAttribute('data-add').split('|'),c=load(),f=c.filter(function(i){return i.id===p[0];})[0];
-if(f){f.q++;}else{c.push({id:p[0],name:p[1],q:1});}
-save(c);sync();say('Added to your cart.');});});
+var ex=b.getAttribute('data-excl');if(ex){c=c.filter(function(i){return i.id!==ex;});f=c.filter(function(i){return i.id===p[0];})[0];}
+if(f){if(!ex)f.q++;}else{c.push({id:p[0],name:p[1],q:1});}
+save(c);sync();var th=p[0].replace(/-\d$/,'');say(/-\d$/.test(p[0])&&!c.some(function(i){return i.id===th;})?'Added. This add-on needs the '+p[1].split(': ')[0]+' party box to check out.':'Added to your cart.');});});
 document.querySelectorAll('[data-demo]').forEach(function(b){b.addEventListener('click',function(){say('Checkout is not connected yet. This is a preview.');});});
 var bd=document.getElementById('banner-dlg');
 if(bd){var bf=document.getElementById('banner-form');
@@ -18,11 +19,43 @@ var g=function(n){return (bf.elements[n].value||'').trim();},txt=g('text');
 if(!txt){document.getElementById('b-msg').textContent='Please add a name or message.';return;}
 var o={template:g('template'),text:txt,line2:g('line2'),colors:g('colors'),date:g('date'),notes:g('notes')},c=load();
 c.push({id:bf.getAttribute('data-slug')+'-3',name:bf.getAttribute('data-name')+': Custom banner',q:1,opts:o});
-save(c);sync();bf.reset();bd.close();say('Banner added to your cart.');});}
+save(c);sync();bf.reset();bd.close();var sl=bf.getAttribute('data-slug');say(c.some(function(i){return i.id===sl;})?'Banner added to your cart.':'Banner added. Add the '+bf.getAttribute('data-name')+' party box to check out.');});
+var bx=document.getElementById('b-x');if(bx)bx.addEventListener('click',function(){bd.close();});
+bd.addEventListener('click',function(e){var r=bd.getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)bd.close();});
+(function(){var p=document.getElementById('b-prev');if(!p)return;var f=bf.elements,fl=document.getElementById('b-flags'),bo=document.getElementById('b-body'),h1=document.getElementById('b-h1'),h2=document.getElementById('b-h2');
+function pal(){var cs=getComputedStyle(bd),a=(cs.getPropertyValue('--c1')||'#D6006F').trim(),b=(cs.getPropertyValue('--c2')||'#FFD60A').trim(),t=(cs.getPropertyValue('--tx')||'#fff').trim(),k=f.colors.value;
+if(k==='Pastels')return{bg:'#FADADD',tx:'#5B3F73',fl:['#F7B6D2','#C9B6F2','#B6E3F2','#FFE3B3','#BFEBD3']};
+if(k==='Bold and bright')return{bg:'#E6007A',tx:'#FFFFFF',fl:['#7B2FF7','#FF8A00','#00A3FF','#FFFFFF','#FFD60A']};
+if(k==='Black and gold')return{bg:'#141414',tx:'#F2C14E',fl:['#141414','#F2C14E','#141414','#F2C14E','#141414']};
+return{bg:a,tx:t,fl:[a,b,a,b,a]};}
+function draw(){var P=pal(),tp=f.template.value,m=(f.text.value||'').trim(),l2=(f.line2.value||'').trim(),head,sub;
+var ph=/\[[^\]]+\]/.test(tp);
+if(/^Something else/.test(tp)){head=m||'Your message here';sub=l2;}
+else if(ph){head=tp.replace(/\[[^\]]+\]/,m||tp.match(/\[[^\]]+\]/)[0]);sub=l2;}
+else{head=tp;sub=[m,l2].filter(Boolean).join(' | ');}
+h1.textContent=head;h2.textContent=sub;bo.style.background=P.bg;bo.style.color=P.tx;
+fl.innerHTML='';for(var i=0;i<7;i++){var e=document.createElement('i');e.style.background=P.fl[i%P.fl.length];fl.appendChild(e);}}
+['template','text','line2','colors'].forEach(function(n){f[n].addEventListener('input',draw);f[n].addEventListener('change',draw);});
+bf.addEventListener('reset',function(){setTimeout(draw,0);});
+document.querySelectorAll('[data-banner]').forEach(function(b){b.addEventListener('click',draw);});
+draw();})();
+}
 var cb=document.getElementById('checkout-btn');
+function guestMsg(c){for(var k=0;k<c.length;k++){var g=c[k],m=g.id.match(/^(.+)-[67]$/);if(!m)continue;var th=(g.name||'').split(':')[0]||'that theme',n=c.filter(function(i){return i.id===m[1];}).reduce(function(a,i){return a+i.q;},0);if(n<1)return 'You added extra guests for '+th+', but there is no '+th+' box in your cart. Add that box, or remove the extra guests.';if(g.q>n)return 'Each box holds up to 16 guests (8 in the box plus up to 8 more). You have '+g.q+' guest upgrades for '+th+' but only '+n+' box'+(n>1?'es':'')+'. Add another '+th+' box, or lower the upgrades to '+n+'.';}return '';}
+function guestsOk(c){return !guestMsg(c);}
+function themeOf(i){return i.id.replace(/-\d$/,'');}
+function isAdd(i){return /-\d$/.test(i.id);}
+function orphans(c){var seen={},o=[];c.forEach(function(i){var t=themeOf(i);if(isAdd(i)&&!seen[t]&&!c.some(function(b){return b.id===t;})){seen[t]=1;o.push({slug:t,name:(i.name||'').split(': ')[0]});}});return o;}
+var ACT=['paint-and-sip','slumber-party'];
+function unit(it){var t=themeOf(it);if(!isAdd(it))return (ACT.indexOf(it.id)>-1||it.id==='graduation')?90:80;var act=ACT.indexOf(t)>-1;return {1:20,2:15,3:25,4:10,5:25,6:act?35:25,7:act?60:40}[Number(it.id.slice(-1))]||0;}
+function hasBox(c){return c.some(function(i){return !isAdd(i);});}
+function needMsg(c){var o=orphans(c);return o.length?'Add-ons come with a box. Add the '+o.map(function(x){return x.name;}).join(' and the ')+' party box'+(o.length>1?'es':'')+' to check out.':'';}
 if(cb){cb.addEventListener('click',function(){
 var m=document.getElementById('checkout-msg'),c=load();
 if(!c.length){m.textContent='Your cart is empty.';return;}
+if(!hasBox(c)){m.textContent='Add-ons can only be bought with a party box. Add a box to your cart first.';return;}
+if(orphans(c).length){m.textContent=needMsg(c);return;}
+if(!guestsOk(c)){m.textContent=guestMsg(c);return;}
 cb.disabled=true;m.textContent='Taking you to secure checkout...';
 fetch('/api/checkout',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({items:c.map(function(i){return {id:i.id,q:i.q,opts:i.opts};})})})
 .then(function(r){return r.text().then(function(t){var d=null;try{d=JSON.parse(t);}catch(e){}
@@ -36,22 +69,40 @@ if(document.body.hasAttribute('data-clear-cart')){save([]);}
 var list=document.getElementById('cart-list');
 function render(){
 if(!list)return;
-var c=load();list.textContent='';
+var c=load();
+c.forEach(function(g){var m=g.id.match(/^(.+)-[67]$/);if(m){var n=c.filter(function(i){return i.id===m[1];}).reduce(function(s,i){return s+i.q;},0);if(n>=1&&g.q>n)g.q=n;}});
+save(c);sync();list.textContent='';
 var empty=document.getElementById('cart-empty'),sum=document.getElementById('cart-sum');
 if(empty)empty.hidden=c.length>0;if(sum)sum.hidden=c.length===0;
-c.forEach(function(it){
-var row=document.createElement('div');row.className='cart-row';
-var nm=document.createElement('b');nm.textContent=it.name;
+var nb=document.getElementById('checkout-msg');
+if(cb&&nb){var bad=c.length&&(!hasBox(c)||orphans(c).length);
+if(bad){cb.disabled=true;nb.innerHTML=hasBox(c)?needMsg(c):'Add-ons can only be bought with a party box. <a href="shop.html">Pick a box</a> to check out.';}else{cb.disabled=false;if(nb.querySelector('a')||/^Add-ons come/.test(nb.textContent))nb.textContent='';}}
+function btn(label,aria,fn,cls,off){var x=document.createElement('button');x.type='button';x.textContent=label;x.setAttribute('aria-label',aria);if(cls)x.className=cls;if(off)x.disabled=true;x.addEventListener('click',fn);return x;}
+function dropTheme(slug){c=c.filter(function(i){return themeOf(i)!==slug;});}
+function row(it,sub,title){
+var r=document.createElement('div');r.className='cart-row'+(sub?' sub':' boxrow');
+var nm=document.createElement('b');nm.textContent=title;
 var q=document.createElement('div');q.className='qty';
-function btn(label,aria,fn,cls){var x=document.createElement('button');x.type='button';x.textContent=label;x.setAttribute('aria-label',aria);if(cls)x.className=cls;x.addEventListener('click',fn);return x;}
-var n=document.createElement('span');n.textContent=it.q;n.setAttribute('aria-live','polite');
-q.appendChild(btn('-','Decrease quantity of '+it.name,function(){it.q--;if(it.q<1){c=c.filter(function(i){return i!==it;});}save(c);sync();render();}));
-q.appendChild(n);
-q.appendChild(btn('+','Increase quantity of '+it.name,function(){it.q++;save(c);sync();render();}));
-q.appendChild(btn('Remove','Remove '+it.name,function(){c=c.filter(function(i){return i!==it;});save(c);sync();render();},'rm'));
+var box=!isAdd(it),gm=it.id.match(/^(.+)-[67]$/),cap=gm?c.filter(function(i){return i.id===gm[1];}).reduce(function(s,i){return s+i.q;},0):99;
+function rm(){if(box){dropTheme(it.id);}else{c=c.filter(function(i){return i!==it;});}save(c);sync();render();}
+if(!it.opts){
+q.appendChild(btn('-','Decrease quantity of '+it.name,function(){if(it.q<=1){rm();return;}it.q--;save(c);sync();render();}));
+var n=document.createElement('span');n.textContent=it.q;n.setAttribute('aria-live','polite');q.appendChild(n);
+q.appendChild(btn('+','Increase quantity of '+it.name,function(){it.q++;save(c);sync();render();},'',it.q>=cap));}
+var rb=btn('Remove','Remove '+it.name,rm,'rmlink');var pr=document.createElement('span');pr.className='pr';pr.textContent='$'+(unit(it)*it.q);if(it.q>1){var ea=document.createElement('small');ea.textContent='$'+unit(it)+' each';pr.appendChild(ea);}
 if(it.opts){var sm=document.createElement('small');sm.textContent=[it.opts.template,'Text: '+it.opts.text,it.opts.line2,it.opts.colors].filter(Boolean).join(' | ');nm.appendChild(sm);}
-if(it.opts){q.removeChild(q.children[2]);q.removeChild(q.children[0]);q.removeChild(q.children[0]);}
-row.appendChild(nm);row.appendChild(q);list.appendChild(row);});
+r.appendChild(nm);r.appendChild(q);r.appendChild(pr);r.appendChild(rb);return r;}
+var tot=c.reduce(function(s,i){return s+unit(i)*i.q;},0),te=document.getElementById('cart-total');if(te)te.textContent='Estimated total: $'+tot;
+var order=[];c.forEach(function(i){var t=themeOf(i);if(order.indexOf(t)<0)order.push(t);});
+order.forEach(function(t){
+var g=document.createElement('div');g.className='cart-group';
+var bx=c.filter(function(i){return i.id===t;})[0],ad=c.filter(function(i){return isAdd(i)&&themeOf(i)===t;}).sort(function(x,y){return Number(x.id.slice(-1))-Number(y.id.slice(-1));});
+var pre=((bx||ad[0]).name||'').split(': ')[0].replace(/ party box$/,'');
+if(bx){g.appendChild(row(bx,false,bx.name));}
+else{var h=document.createElement('div');h.className='cart-row boxrow need';var hb=document.createElement('b');hb.textContent=pre+' party box needed';var sm=document.createElement('small');sm.textContent='These add-ons only go with a '+pre+' box.';hb.appendChild(sm);h.appendChild(hb);
+h.appendChild(btn('Add the box','Add the '+pre+' party box',function(){c.push({id:t,name:pre+' party box',q:1});save(c);sync();render();},'chip'));g.appendChild(h);}
+ad.forEach(function(it){var nmx=(it.name||'').indexOf(pre+': ')===0?it.name.slice(pre.length+2):it.name;g.appendChild(row(it,true,nmx));});
+list.appendChild(g);});
 }
 document.querySelectorAll('form[data-endpoint]').forEach(function(f){f.addEventListener('submit',function(ev){
 ev.preventDefault();

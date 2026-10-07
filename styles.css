@@ -327,3 +327,50 @@ body[data-no-motif] .tcard .top{padding-right:24px}
 .nav .links .pill{color:#fff}
 .hero .btn:not(.dk):not(.line){color:#B8005A}
 body.theme .sec .btn:not(.dk):not(.line){color:var(--ink)}
+.addnote{margin:-10px 0 0;font-size:15px;font-weight:600}
+
+/* Expand the fun */
+.expand{display:flex;flex-wrap:wrap;gap:16px 28px;align-items:center;background:#fff;border:2px solid var(--ink);border-radius:28px;box-shadow:0 8px 0 var(--ink);padding:22px 26px}
+.expand .ehead{flex:1 1 260px}
+.expand h3{font-size:24px}
+.expand p{margin:4px 0 0;font-size:15px}
+.etiles{flex:2 1 420px;display:flex;flex-wrap:wrap;gap:14px}
+.gtile{flex:1 1 200px;display:flex;flex-wrap:wrap;gap:10px;justify-content:space-between;align-items:center;border:2px solid var(--ink);border-radius:20px;padding:14px 16px;background:color-mix(in srgb,var(--c1) 8%,#fff)}
+.gtile.best{border-color:var(--c1);box-shadow:0 4px 0 var(--c1)}
+.gtile b{display:block;font-size:18px}
+.gtile span{font-size:14px}
+.gbuy{display:flex;align-items:center;gap:12px}
+.gbuy .price{font-size:20px}
+
+/* Banner designer: close button and live preview */
+.bdlg form{position:relative}
+.bx{position:absolute;top:-10px;right:-10px;width:40px;height:40px;border-radius:50%;border:2px solid var(--ink);background:#fff;color:var(--ink);font-size:26px;line-height:1;cursor:pointer;display:flex;align-items:center;justify-content:center;padding:0;box-shadow:0 3px 0 var(--peri,#B9A8F0)}
+.bx:hover{background:var(--ink);color:#fff}
+.bdlg h2{padding-right:36px}
+.bprev{container-type:inline-size;display:flex;flex-direction:column;gap:0;background:#FAF6FF;border:2px dashed rgba(27,16,48,.25);border-radius:18px;padding:14px 14px 10px}
+.bflags{display:flex;gap:4px;padding:0 6px}
+.bflags i{flex:1;aspect-ratio:1/1.1;clip-path:polygon(0 0,100% 0,50% 100%);display:block}
+.bbody{margin-top:-2px;border-radius:10px 10px 18px 18px;padding:5cqw 5cqw 6cqw;text-align:center;display:flex;flex-direction:column;gap:6px;align-items:center;justify-content:center;min-height:30cqw;box-shadow:0 5px 0 rgba(0,0,0,.18)}
+.bh1{font-family:'Bowlby One',sans-serif;font-size:clamp(20px,8.5cqw,44px);line-height:1.05;overflow-wrap:anywhere}
+.bh2{font-weight:700;font-size:clamp(13px,4.6cqw,22px);overflow-wrap:anywhere}
+.bh2:empty{display:none}
+.bnote{font-size:12px;opacity:.7;text-align:center;margin:10px 0 0}
+
+/* Cart: one card per box, add-ons listed inside it */
+.cart-group{background:#fff;border:2px solid var(--ink);border-radius:24px;box-shadow:0 6px 0 var(--peri);overflow:hidden;margin-bottom:24px}
+.cart-group .cart-row{background:none;border:0;border-radius:0;box-shadow:none;margin:0;padding:18px 24px;gap:12px 20px}
+.cart-group .cart-row + .cart-row{border-top:1px solid rgba(27,16,48,.12)}
+.cart-group .cart-row b{flex:1 1 220px;font-size:17px}
+.cart-group .cart-row.boxrow b{font-size:21px}
+.cart-group .cart-row.sub{background:#FBF8FF;padding:14px 24px 14px 44px}
+.cart-group .cart-row.sub b{font-size:15px;font-weight:600}
+.cart-group .cart-row.need{background:#FFF4D6}
+.cart-row .qty{gap:8px}
+.cart-row .qty span{min-width:18px;text-align:center}
+.cart-row .qty button{min-width:34px;min-height:34px;width:34px;height:34px;font-size:16px;border-width:2px;padding:0}
+.cart-row .pr{margin-left:auto;font-weight:700;font-size:17px;min-width:64px;text-align:right}
+.cart-row .pr small{display:block;font-weight:400;font-size:12px;opacity:.7}
+.cart-row .rmlink{background:none;border:0;box-shadow:none;padding:4px;font:inherit;font-size:13px;text-decoration:underline;color:inherit;opacity:.7;cursor:pointer}
+.cart-row .rmlink:hover{opacity:1}
+.sum .total{font-family:'Bowlby One',sans-serif;font-size:22px;margin:8px 0}
+@media (max-width:560px){.cart-group .cart-row{padding:16px 18px}.cart-group .cart-row.sub{padding-left:28px}}
