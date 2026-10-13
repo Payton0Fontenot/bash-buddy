@@ -5,7 +5,7 @@ function load(){try{return (JSON.parse(localStorage.getItem(KEY))||[]).filter(fu
 function save(c){try{localStorage.setItem(KEY,JSON.stringify(c));}catch(e){}}
 function sync(){var n=load().reduce(function(a,i){return a+i.q;},0);document.querySelectorAll('[data-cart-count]').forEach(function(el){el.textContent=n;});}
 
-var dr=document.createElement('div');dr.innerHTML='<div id="cdr-ov" hidden></div><aside id="cdr" role="dialog" aria-modal="true" aria-label="Your cart" aria-hidden="true"><div class="cdr-h"><h2>Your cart</h2><button type="button" id="cdr-x" aria-label="Close cart">&times;</button></div><div class="cdr-b"><div id="cart-empty"><p>Your cart is empty.</p><a class="btn dk" href="shop.html">Shop all themes</a></div><div id="cart-list"></div></div><div class="cdr-f" id="cart-sum" hidden><p class="total" id="cart-total"></p><p class="fine">Shipping is included in every box price. Your final total is confirmed on the secure Stripe checkout page.</p><button class="btn dk" type="button" id="checkout-btn">Checkout</button><p class="msg" id="checkout-msg" role="status" aria-live="polite"></p></div></aside>';
+var dr=document.createElement('div');dr.innerHTML='<div id="cdr-ov" hidden></div><aside id="cdr" role="dialog" aria-modal="true" aria-label="Your cart" aria-hidden="true"><div class="cdr-h"><h2>Your cart</h2><button type="button" id="cdr-x" aria-label="Close cart">&times;</button></div><div class="cdr-b"><div id="cart-empty"><p>Your cart is empty.</p><a class="btn dk" href="shop.html">Shop all themes</a></div><div id="cart-list"></div></div><div class="cdr-f" id="cart-sum" hidden><p class="total" id="cart-total"></p><p class="fine">Shipping or local pickup is chosen at checkout. Your final total is confirmed on the secure Stripe checkout page.</p><button class="btn dk" type="button" id="checkout-btn">Checkout</button><p class="msg" id="checkout-msg" role="status" aria-live="polite"></p></div></aside>';
 while(dr.firstChild)document.body.appendChild(dr.firstChild);
 var cdr=document.getElementById('cdr'),cov=document.getElementById('cdr-ov'),lastF=null;
 function openCart(){lastF=document.activeElement;render();cdr.classList.add('on');cdr.setAttribute('aria-hidden','false');cov.hidden=false;document.documentElement.classList.add('cdr-open');setTimeout(function(){document.getElementById('cdr-x').focus();},50);}
@@ -14,8 +14,8 @@ document.getElementById('cdr-x').addEventListener('click',closeCart);cov.addEven
 document.addEventListener('keydown',function(e){if(e.key==='Escape'&&cdr.classList.contains('on'))closeCart();});
 document.querySelectorAll('a[href="cart.html"]').forEach(function(l){l.addEventListener('click',function(e){e.preventDefault();openCart();});});
 var DESC={1:'Mini treats, stickers, and small extras for 8 guests',2:'Recipe cards, labels, stir sticks, and garnish picks',4:'Trash bags, wipes, a bin liner, and a checklist',5:'Sash, crown, and a small gift for the host',6:'Plates, cups, and supplies for 4 more guests',7:'Plates, cups, and supplies for 8 more guests'};
-var BOXINC={'paint-and-sip':'Includes tableware, table covers, and a canvas, paints, and brushes for every guest.','slumber-party':'Includes tableware, fairy lights, a photo backdrop, and a sleep mask and spa extras for every guest.'};
-function descOf(it){if(it.opts)return '';if(!/-\d$/.test(it.id))return 'Serves 8. Shipping included. '+(BOXINC[it.id]||'Includes tableware, backdrop, balloon garland, and a game or activity.');var n=Number(it.id.slice(-1)),act=/^(paint-and-sip|slumber-party)-/.test(it.id),d=DESC[n]||'';if(n>=6&&act)d=d.replace('Plates, cups, and supplies','Plates, cups, supplies, and full activity materials');return d;}
+var BOXINC={'birthday':'Includes tableware, backdrop, balloon garland, a sash, crown, and small gift for the guest of honor, a game, and a cleanup kit.','paint-and-sip':'Includes tableware, table covers, and a canvas, paints, and brushes for every guest.','slumber-party':'Includes tableware, string lights, a backdrop and banner, the dice game, a cleanup kit, and a self-care set for every guest.'};
+function descOf(it){if(it.opts)return '';if(!/-\d$/.test(it.id))return 'Serves 8. '+(BOXINC[it.id]||'Includes tableware, backdrop, balloon garland, a game or activity, and a cleanup kit.');var n=Number(it.id.slice(-1)),act=/^(paint-and-sip|slumber-party)-/.test(it.id),d=DESC[n]||'';if(n>=6&&act)d=d.replace('Plates, cups, and supplies','Plates, cups, supplies, and full activity materials');return d;}
 document.querySelectorAll('[data-add]').forEach(function(b){b.addEventListener('click',function(){
 var p=b.getAttribute('data-add').split('|'),c=load(),f=c.filter(function(i){return i.id===p[0];})[0];
 var ex=b.getAttribute('data-excl');if(ex){c=c.filter(function(i){return i.id!==ex;});f=c.filter(function(i){return i.id===p[0];})[0];}
@@ -132,7 +132,7 @@ document.querySelectorAll('[data-social]').forEach(function(a){var k=a.getAttrib
 document.querySelectorAll('[data-email-text]').forEach(function(el){if(!CFG.email)return;el.textContent=CFG.email;var w=el.closest('[data-email-wrap]');if(w)w.hidden=false;});
 var __art=0;
 var TH={
-'21st-birthday':{c:['#D6006F','#FFD60A','#FF7BC8','#FFFFFF'],m:'twentyone'},
+'birthday':{c:['#D6006F','#FFD60A','#FF7BC8','#FFFFFF'],m:'twentyone'},
 'friendsgiving':{c:['#B5481A','#FFC83D','#7A8F3A','#FFF4E0'],m:'harvest'},
 'christmas':{c:['#B3122B','#2E8B57','#FFD166','#FFFFFF'],m:'tree'},
 'halloween':{c:['#2B1055','#FF7A1A','#8E5BD9','#FFF2D6'],m:'pumpkin'},
@@ -141,7 +141,6 @@ var TH={
 'coquette':{c:['#F7B2CC','#CFE3FF','#FFFFFF','#E57BA6'],m:'bow'},
 'slumber-party':{c:['#6B2BD9','#FFB3D9','#FFE27A','#FFFFFF'],m:'moon'},
 'paint-and-sip':{c:['#0B6E99','#FFD60A','#FF6B6B','#FFFFFF'],m:'palette'},
-'beach-luau':{c:['#00A6A6','#FF8A5B','#FFD60A','#FFFFFF'],m:'pineapple'},
 'game-day':{c:['#1F5E2E','#FFC83D','#8B4A22','#FFFFFF'],m:'football'},
 'graduation':{c:['#7A1530','#F2B705','#FFFFFF','#F6D77A'],m:'cap'}
 };
@@ -168,7 +167,7 @@ function art(src,uid){
 if(/reel-/.test(src)){return '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 500" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><defs><linearGradient id="g'+uid+'" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FFD0EC"/><stop offset="1" stop-color="#C9CFFF"/></linearGradient></defs><rect width="400" height="500" fill="url(#g'+uid+')"/><circle cx="200" cy="230" r="78" fill="#D6006F" stroke="#2B1B6B" stroke-width="6"/><path d="M180 195l60 35-60 35z" fill="#fff"/><path d="M330 90l8 22 22 8-22 8-8 22-8-22-22-8 22-8z" fill="#C9B8FF" stroke="#2B1B6B" stroke-width="4"/></svg>';}
 if(/ambassador/.test(src)){return '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 500" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><defs><linearGradient id="g'+uid+'" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FFD0EC"/><stop offset="1" stop-color="#C9CFFF"/></linearGradient></defs><rect width="400" height="500" fill="url(#g'+uid+')"/><circle cx="200" cy="190" r="70" fill="#fff" stroke="#2B1B6B" stroke-width="6"/><path d="M60 460c0-90 60-150 140-150s140 60 140 150z" fill="#D6006F" stroke="#2B1B6B" stroke-width="6"/><path d="M330 90l8 22 22 8-22 8-8 22-8-22-22-8 22-8z" fill="#C9B8FF" stroke="#2B1B6B" stroke-width="4"/></svg>';}
 
-var mm=src.match(/images\/(.+?)-(box|setup|party)\.jpg/),slug=mm?mm[1]:'21st-birthday',T=TH[slug]||TH['21st-birthday'],c=T.c,mo=T.m;
+var mm=src.match(/images\/(.+?)-(box|setup|party)\.jpg/),slug=mm?mm[1]:'birthday',T=TH[slug]||TH['birthday'],c=T.c,mo=T.m;
 var k=/setup/.test(src)?'setup':(/box|unboxing/.test(src)?'box':'party');
 function balloon(x,y,rad,fill,sy){sy=sy||60;var b=y+rad*1.15,o='<g>';
 o+='<path d="M'+x+' '+b+' Q'+(x-6)+' '+(b+sy/2)+' '+(x+2)+' '+(b+sy)+'" fill="none" stroke="'+INK+'" stroke-width="1.4"/>';

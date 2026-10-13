@@ -5,7 +5,7 @@
 module.exports = {
   // Party boxes, one per theme
   boxes: {
-    "21st-birthday": "price_1UNiqkPcDLOMUTAQDqXJH82o",
+    "birthday": "price_1UNiqkPcDLOMUTAQDqXJH82o",
     "friendsgiving": "price_1UNlIkPcDLOMUTAQBZ5gv7Sn",
     "christmas": "price_1UNlNDPcDLOMUTAQ2WS4beB0",
     "halloween": "price_1UNx3zPcDLOMUTAQ3I6O9MPm",
@@ -14,7 +14,6 @@ module.exports = {
     "coquette": "price_1UNx87PcDLOMUTAQM3CBLMd6",
     "slumber-party": "price_1UNx8nPcDLOMUTAQashICMhz",
     "paint-and-sip": "price_1UNx5IPcDLOMUTAQExZ3nhCk",
-    "beach-luau": "price_1UNx9LPcDLOMUTAQL96HUkFC",
     "game-day": "price_1UNxByPcDLOMUTAQPLoKljD1",
     "graduation": "price_1UNxD9PcDLOMUTAQIelHKSYJ"
   },
@@ -32,7 +31,7 @@ module.exports = {
   },
   // The recommended add-on that is different for each theme (sash and crown set, etc.)
   extras: {
-    "21st-birthday": "",
+    "birthday": "",
     "friendsgiving": "",
     "christmas": "",
     "halloween": "price_1UNx3zPcDLOMUTAQ3I6O9MPm",
@@ -41,7 +40,6 @@ module.exports = {
     "coquette": "",
     "slumber-party": "",
     "paint-and-sip": "price_1UNx5IPcDLOMUTAQExZ3nhCk",
-    "beach-luau": "",
     "game-day": "",
     "graduation": ""
   }

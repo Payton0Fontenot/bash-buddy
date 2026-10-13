@@ -1,3 +1,15 @@
 {
-  "cleanUrls": true
+  "cleanUrls": true,
+  "redirects": [
+    {
+      "source": "/21st-birthday",
+      "destination": "/birthday",
+      "permanent": true
+    },
+    {
+      "source": "/beach-luau",
+      "destination": "/shop",
+      "permanent": true
+    }
+  ]
 }

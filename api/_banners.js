@@ -1,11 +1,11 @@
 // Allowed banner templates and color choices. Keep in sync with the dropdowns on the theme pages.
 module.exports = {
   "templates": {
-    "21st-birthday": [
-      "Happy 21st Birthday [Name]",
-      "Finally 21",
-      "Cheers to 21 Years",
-      "[Name] Turns 21",
+    "birthday": [
+      "Happy Birthday [Name]",
+      "Make a Wish",
+      "Cheers to [Name]",
+      "[Name]'s Birthday Bash",
       "Something else (describe in notes)"
     ],
     "friendsgiving": [
@@ -62,13 +62,6 @@ module.exports = {
       "Sip and Create",
       "[Name]'s Art Night",
       "Cheers and Canvas",
-      "Something else (describe in notes)"
-    ],
-    "beach-luau": [
-      "Aloha",
-      "Luau Time",
-      "Beach Bash",
-      "[Name]'s Luau",
       "Something else (describe in notes)"
     ],
     "game-day": [

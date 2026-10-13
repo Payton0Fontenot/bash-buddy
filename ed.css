@@ -395,3 +395,9 @@ p.draft{background:none;border:1px solid var(--ink);border-left:4px solid var(--
 .lrow{gap:12px 0}
 .lrow p{padding-left:48px}
 @media (max-width:1000px){.lrow p{padding-left:0}}
+
+/* Coming soon themes */
+.soontag{display:inline-block;font-size:12px;letter-spacing:.12em;text-transform:uppercase;font-weight:600;color:var(--pink)}
+.ecard .pr.soontag{color:var(--pink)}
+.ecard.soon .photo{opacity:.55}
+.buyrow .soontag{margin-right:8px}

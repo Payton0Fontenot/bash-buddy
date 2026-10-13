@@ -4,6 +4,8 @@
 const prices = require("./_prices.js");
 const banners = require("./_banners.js");
 const ACTIVITY = ["paint-and-sip", "slumber-party"];
+// Boxes for sale right now. Every other theme shows "Coming soon" on the site.
+const LIVE = ["birthday", "slumber-party", "friendsgiving"];
 
 function cleanBanner(id, o) {
   const m = typeof id === "string" && id.match(/^(.+)-3$/);
@@ -95,6 +97,11 @@ module.exports = async (req, res) => {
     return s + ": " + bits.join(", ");
   }).join(" | ").slice(0, 500);
 
+  // Only boxes that are for sale now can be checked out.
+  if (items.some((it) => it && typeof it.id === "string" && !LIVE.includes(it.id.replace(/-\d$/, "")))) {
+    return res.status(400).json({ error: "One of the themes in your cart is coming soon and is not for sale yet. Remove it to check out." });
+  }
+
   const params = new URLSearchParams();
   params.append("mode", "payment");
   params.append("metadata[order]", groups);
@@ -131,9 +138,10 @@ module.exports = async (req, res) => {
   params.append("cancel_url", origin + "/cart");
   params.append("shipping_address_collection[allowed_countries][0]", "US");
   params.append("billing_address_collection", "auto");
-  if (process.env.STRIPE_SHIPPING_RATE_ID) {
-    params.append("shipping_options[0][shipping_rate]", process.env.STRIPE_SHIPPING_RATE_ID);
-  }
+  // Customers pay for shipping. Create these rates in Stripe (Product catalog, Shipping rates)
+  // and add their IDs in Vercel: STRIPE_SHIPPING_RATE_ID for shipping, STRIPE_PICKUP_RATE_ID for $0 local pickup.
+  const rates = [process.env.STRIPE_SHIPPING_RATE_ID, process.env.STRIPE_PICKUP_RATE_ID].filter(Boolean);
+  rates.forEach((rate, i) => params.append("shipping_options[" + i + "][shipping_rate]", rate));
 
   try {
     const r = await fetch("https://api.stripe.com/v1/checkout/sessions", {
