@@ -4,8 +4,8 @@
 const prices = require("./_prices.js");
 const banners = require("./_banners.js");
 const ACTIVITY = ["paint-and-sip", "slumber-party"];
-// Boxes for sale right now. Every other theme shows "Coming soon" on the site.
-const LIVE = ["birthday", "slumber-party", "friendsgiving"];
+// This version of the site sells only the Birthday Bash box.
+const LIVE = ["birthday"];
 
 function cleanBanner(id, o) {
   const m = typeof id === "string" && id.match(/^(.+)-3$/);
@@ -99,7 +99,7 @@ module.exports = async (req, res) => {
 
   // Only boxes that are for sale now can be checked out.
   if (items.some((it) => it && typeof it.id === "string" && !LIVE.includes(it.id.replace(/-\d$/, "")))) {
-    return res.status(400).json({ error: "One of the themes in your cart is coming soon and is not for sale yet. Remove it to check out." });
+    return res.status(400).json({ error: "Only the Birthday Bash box is for sale right now. Remove the other items to check out." });
   }
 
   const params = new URLSearchParams();

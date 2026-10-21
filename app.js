@@ -5,7 +5,7 @@ function load(){try{return (JSON.parse(localStorage.getItem(KEY))||[]).filter(fu
 function save(c){try{localStorage.setItem(KEY,JSON.stringify(c));}catch(e){}}
 function sync(){var n=load().reduce(function(a,i){return a+i.q;},0);document.querySelectorAll('[data-cart-count]').forEach(function(el){el.textContent=n;});}
 
-var dr=document.createElement('div');dr.innerHTML='<div id="cdr-ov" hidden></div><aside id="cdr" role="dialog" aria-modal="true" aria-label="Your cart" aria-hidden="true"><div class="cdr-h"><h2>Your cart</h2><button type="button" id="cdr-x" aria-label="Close cart">&times;</button></div><div class="cdr-b"><div id="cart-empty"><p>Your cart is empty.</p><a class="btn dk" href="shop.html">Shop all themes</a></div><div id="cart-list"></div></div><div class="cdr-f" id="cart-sum" hidden><p class="total" id="cart-total"></p><p class="fine">Shipping or local pickup is chosen at checkout. Your final total is confirmed on the secure Stripe checkout page.</p><button class="btn dk" type="button" id="checkout-btn">Checkout</button><p class="msg" id="checkout-msg" role="status" aria-live="polite"></p></div></aside>';
+var dr=document.createElement('div');dr.innerHTML='<div id="cdr-ov" hidden></div><aside id="cdr" role="dialog" aria-modal="true" aria-label="Your cart" aria-hidden="true"><div class="cdr-h"><h2>Your cart</h2><button type="button" id="cdr-x" aria-label="Close cart">&times;</button></div><div class="cdr-b"><div id="cart-empty"><p>Your cart is empty.</p><a class="btn dk" href="birthday.html">Shop the Birthday Bash</a></div><div id="cart-list"></div></div><div class="cdr-f" id="cart-sum" hidden><p class="total" id="cart-total"></p><p class="fine">Shipping or local pickup is chosen at checkout. Your final total is confirmed on the secure Stripe checkout page.</p><button class="btn dk" type="button" id="checkout-btn">Checkout</button><p class="msg" id="checkout-msg" role="status" aria-live="polite"></p></div></aside>';
 while(dr.firstChild)document.body.appendChild(dr.firstChild);
 var cdr=document.getElementById('cdr'),cov=document.getElementById('cdr-ov'),lastF=null;
 function openCart(){lastF=document.activeElement;render();cdr.classList.add('on');cdr.setAttribute('aria-hidden','false');cov.hidden=false;document.documentElement.classList.add('cdr-open');setTimeout(function(){document.getElementById('cdr-x').focus();},50);}
@@ -88,7 +88,7 @@ var empty=document.getElementById('cart-empty'),sum=document.getElementById('car
 if(empty)empty.hidden=c.length>0;if(sum)sum.hidden=c.length===0;
 var nb=document.getElementById('checkout-msg');
 if(cb&&nb){var bad=c.length&&(!hasBox(c)||orphans(c).length);
-if(bad){cb.disabled=true;nb.innerHTML=hasBox(c)?needMsg(c):'Add-ons can only be bought with a party box. <a href="shop.html">Pick a box</a> to check out.';}else{cb.disabled=false;if(nb.querySelector('a')||/^Add-ons come/.test(nb.textContent))nb.textContent='';}}
+if(bad){cb.disabled=true;nb.innerHTML=hasBox(c)?needMsg(c):'Add-ons can only be bought with a party box. <a href="birthday.html">Add the box</a> to check out.';}else{cb.disabled=false;if(nb.querySelector('a')||/^Add-ons come/.test(nb.textContent))nb.textContent='';}}
 function btn(label,aria,fn,cls,off){var x=document.createElement('button');x.type='button';x.textContent=label;x.setAttribute('aria-label',aria);if(cls)x.className=cls;if(off)x.disabled=true;x.addEventListener('click',fn);return x;}
 function dropTheme(slug){c=c.filter(function(i){return themeOf(i)!==slug;});}
 function row(it,sub,title){

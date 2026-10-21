@@ -7,9 +7,64 @@
       "permanent": true
     },
     {
+      "source": "/shop",
+      "destination": "/birthday",
+      "permanent": false
+    },
+    {
       "source": "/beach-luau",
-      "destination": "/shop",
-      "permanent": true
+      "destination": "/birthday",
+      "permanent": false
+    },
+    {
+      "source": "/friendsgiving",
+      "destination": "/birthday",
+      "permanent": false
+    },
+    {
+      "source": "/christmas",
+      "destination": "/birthday",
+      "permanent": false
+    },
+    {
+      "source": "/halloween",
+      "destination": "/birthday",
+      "permanent": false
+    },
+    {
+      "source": "/get-wild",
+      "destination": "/birthday",
+      "permanent": false
+    },
+    {
+      "source": "/cowgirl-western",
+      "destination": "/birthday",
+      "permanent": false
+    },
+    {
+      "source": "/coquette",
+      "destination": "/birthday",
+      "permanent": false
+    },
+    {
+      "source": "/slumber-party",
+      "destination": "/birthday",
+      "permanent": false
+    },
+    {
+      "source": "/paint-and-sip",
+      "destination": "/birthday",
+      "permanent": false
+    },
+    {
+      "source": "/game-day",
+      "destination": "/birthday",
+      "permanent": false
+    },
+    {
+      "source": "/graduation",
+      "destination": "/birthday",
+      "permanent": false
     }
   ]
 }

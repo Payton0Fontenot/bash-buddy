@@ -1,5 +1,7 @@
 # Bash Buddy Co. site (static preview)
 
+**Branch `birthday-only`:** a second version of the site that sells only the Birthday Bash box. The original site with every theme lives on `main`.
+
 Plain HTML and CSS. No build step. `index.html` is the home page.
 
 ## Deploy to Vercel
