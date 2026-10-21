@@ -485,3 +485,14 @@ p.draft{background:none;border:1px solid var(--ink);border-left:4px solid var(--
 .feat .f-link:hover{color:var(--pink);border-color:var(--pink)}
 .feat .f-more{align-self:stretch;margin-top:12px;padding-top:18px;border-top:1px solid #E3D6EE;font-size:14px;color:var(--soft)}
 .feat .f-more a{color:var(--pink);font-weight:600;border-bottom:1px solid currentColor}
+
+/* About page top: centered header with on-page links */
+.ab-top{background:var(--tint);border-bottom:1px solid var(--ink);padding:96px 48px 0;text-align:center;display:flex;flex-direction:column;align-items:center;gap:20px}
+.ab-top h1{margin:0;font-size:clamp(44px,6vw,84px);line-height:1.02}
+.ab-top .lead{margin:0;font-family:'Playfair Display',Georgia,serif;font-size:clamp(20px,2.2vw,26px);line-height:1.45;max-width:34ch}
+.ab-top p{margin:0;font-size:16px;line-height:1.7;color:#4A3B63}
+.ab-jump{align-self:stretch;margin:36px -48px 0;display:flex;border-top:1px solid var(--ink)}
+.ab-jump a{flex:1 1 0;padding:22px 12px;font-size:13px;letter-spacing:.12em;text-transform:uppercase;font-weight:600;color:var(--ink);border-left:1px solid var(--ink)}
+.ab-jump a:first-child{border-left:0}
+.ab-jump a:hover{background:#fff;color:var(--pink)}
+@media (max-width:760px){.ab-top{padding:56px 20px 0}.ab-jump{margin:28px -20px 0}.ab-jump a{padding:16px 6px;font-size:11px;letter-spacing:.08em}}
