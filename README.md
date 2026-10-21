@@ -1,6 +1,6 @@
 # Bash Buddy Co. site (static preview)
 
-**Branch `birthday-only`:** a second version of the site that sells only the Birthday Bash box. The original site with every theme lives on `main`.
+**Branch `birthday-only`:** a second version of the site that launches with one box, the Birthday Bash. The language stays brand-wide so new themes can be added later: add a theme page, link it from the home page, and add its slug to `LIVE` in `api/checkout.js`. The original site with every theme lives on `main`.
 
 Plain HTML and CSS. No build step. `index.html` is the home page.
 

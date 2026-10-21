@@ -4,7 +4,7 @@
 const prices = require("./_prices.js");
 const banners = require("./_banners.js");
 const ACTIVITY = ["paint-and-sip", "slumber-party"];
-// This version of the site sells only the Birthday Bash box.
+// Boxes for sale right now. The Birthday Bash is the first box; add more slugs here as new themes launch.
 const LIVE = ["birthday"];
 
 function cleanBanner(id, o) {
@@ -99,7 +99,7 @@ module.exports = async (req, res) => {
 
   // Only boxes that are for sale now can be checked out.
   if (items.some((it) => it && typeof it.id === "string" && !LIVE.includes(it.id.replace(/-\d$/, "")))) {
-    return res.status(400).json({ error: "Only the Birthday Bash box is for sale right now. Remove the other items to check out." });
+    return res.status(400).json({ error: "One of the items in your cart is not for sale yet. Right now we sell the Birthday Bash. Remove the other items to check out." });
   }
 
   const params = new URLSearchParams();
