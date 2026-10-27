@@ -66,5 +66,11 @@
       "destination": "/birthday",
       "permanent": false
     }
+  ],
+  "rewrites": [
+    {
+      "source": "/reserve/:price(40|55)",
+      "destination": "/reserve.html"
+    }
   ]
 }

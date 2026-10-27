@@ -118,11 +118,11 @@ list.appendChild(g);});
 }
 document.querySelectorAll('form[data-endpoint]').forEach(function(f){f.addEventListener('submit',function(ev){
 ev.preventDefault();
-var ep=f.getAttribute('data-endpoint'),m=f.querySelector('.msg');
+var ep=f.getAttribute('data-endpoint')||(window.BBC||{}).formEndpoint,m=f.querySelector('.msg');
 if(!ep){say('This form is not connected yet.');return;}
 fetch(ep,{method:'POST',body:new FormData(f),headers:{'Accept':'application/json'}}).then(function(r){
 if(!r.ok)throw new Error('bad');
-f.reset();m.textContent='Thanks! We got it.';
+f.reset();m.textContent=f.getAttribute('data-success')||'Thanks! We got it.';
 }).catch(function(){m.textContent='Something went wrong. Please try again.';});
 });});
 var CFG=window.BBC||{};
@@ -244,4 +244,16 @@ t.addEventListener('scroll',function(){clearTimeout(tm);tm=setTimeout(norm,140);
 document.querySelectorAll('[data-scroll][data-target="'+t.id+'"]').forEach(function(btn){btn.addEventListener('click',function(){if(!anim){norm();tgt=t.scrollLeft;}tgt+=Number(btn.getAttribute('data-scroll'))*step();if(!anim){anim=1;t.style.scrollSnapType='none';t.style.scrollBehavior='auto';raf=requestAnimationFrame(tick);}});});});
 sync();render();
 if(/\/cart(\.html)?$/.test(location.pathname))openCart();
+})();
+
+// Price test: each visitor sees $40 or $55 and keeps it on return visits. Add ?price=40 or ?price=55 to preview one.
+(function(){
+var ok=['40','55'],v=null,q=(location.search.match(/[?&]price=(40|55)\b/)||[])[1],p=(location.pathname.match(/^\/reserve\/(40|55)\b/)||[])[1];
+try{v=localStorage.getItem('bbc_price');}catch(e){}
+if(q)v=q;else if(p)v=p;
+if(ok.indexOf(v)<0)v=Math.random()<0.5?'40':'55';
+try{localStorage.setItem('bbc_price',v);}catch(e){}
+document.querySelectorAll('[data-price]').forEach(function(el){el.textContent='$'+v;});
+document.querySelectorAll('a[data-reserve]').forEach(function(a){a.href='/reserve/'+v;});
+document.querySelectorAll('input[name=price_shown]').forEach(function(i){i.value='$'+v;});
 })();

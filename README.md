@@ -30,3 +30,9 @@ The cart page sends the cart to `api/checkout.js`, which creates a Stripe Checko
 
 ## Look
 The site uses a Y2K glitter look: signature pink gradients, Bowlby One for headlines, and Sora for body text. Empty photo spots show illustrated templates until you add a real .jpg with the matching name in `images/`.
+
+## Price test ($40 vs $55)
+- Each visitor is randomly shown $40 or $55 on the home and Birthday Bash pages, and keeps that price on return visits. To preview one, add `?price=40` or `?price=55` to the page address.
+- "Reserve for my party" goes to `/reserve/40` or `/reserve/55` (both show `reserve.html`). The form also sends the price each person saw as `price_shown`.
+- Turn on Web Analytics in your Vercel project to count visits to each reserve path. Compare `/reserve/40` and `/reserve/55` visits (clicks) and form signups at each price.
+- Connect the forms by pasting your form service URL into `formEndpoint` in `site-config.js`.
