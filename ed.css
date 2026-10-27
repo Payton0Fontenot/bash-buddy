@@ -401,3 +401,8 @@ p.draft{background:none;border:1px solid var(--ink);border-left:4px solid var(--
 .ecard .pr.soontag{color:var(--pink)}
 .ecard.soon .photo{opacity:.55}
 .buyrow .soontag{margin-right:8px}
+
+/* Box contents tags and price note */
+.icar .ptag{display:block;margin-bottom:6px;font-size:11px;letter-spacing:.16em;text-transform:uppercase;font-weight:600;color:var(--ac,var(--pink))}
+.pnote{margin:14px 0 0;font-size:14px;color:var(--soft);line-height:1.6}
+.einside li b{font-weight:600}

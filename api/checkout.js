@@ -5,7 +5,7 @@ const prices = require("./_prices.js");
 const banners = require("./_banners.js");
 const ACTIVITY = ["paint-and-sip", "slumber-party"];
 // Boxes for sale right now. Every other theme shows "Coming soon" on the site.
-const LIVE = ["birthday", "slumber-party", "friendsgiving"];
+const LIVE = ["birthday", "slumber-party"];
 
 function cleanBanner(id, o) {
   const m = typeof id === "string" && id.match(/^(.+)-3$/);
