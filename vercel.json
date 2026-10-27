@@ -69,8 +69,8 @@
   ],
   "rewrites": [
     {
-      "source": "/reserve/:price(40|55)",
-      "destination": "/reserve.html"
+      "source": "/reserve/:price",
+      "destination": "/reserve"
     }
   ]
 }
