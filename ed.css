@@ -496,3 +496,8 @@ p.draft{background:none;border:1px solid var(--ink);border-left:4px solid var(--
 .ab-jump a:first-child{border-left:0}
 .ab-jump a:hover{background:#fff;color:var(--pink)}
 @media (max-width:760px){.ab-top{padding:56px 20px 0}.ab-jump{margin:28px -20px 0}.ab-jump a{padding:16px 6px;font-size:11px;letter-spacing:.08em}}
+
+/* Box contents tags and price note */
+.icar .ptag{display:block;margin-bottom:6px;font-size:11px;letter-spacing:.16em;text-transform:uppercase;font-weight:600;color:var(--ac,var(--pink))}
+.pnote{margin:14px 0 0;font-size:14px;color:var(--soft);line-height:1.6}
+.einside li b{font-weight:600}
