@@ -510,3 +510,7 @@ p.draft{background:none;border:1px solid var(--ink);border-left:4px solid var(--
 .eform .hint{font-size:13px;color:var(--soft)}
 .announce a{color:inherit;text-decoration:none}
 .announce a:hover{text-decoration:underline;text-underline-offset:3px}
+.efaq details p.flead{padding-bottom:10px}
+.efaq .flist{margin:0 0 18px;padding:0 0 0 20px;max-width:720px;font-size:15px;line-height:1.75;color:#4A3B63}
+.efaq .flist li{margin:0 0 6px}
+.efaq .flist b{color:var(--ink);font-weight:600}
