@@ -600,3 +600,13 @@ p.draft{background:none;border:1px solid var(--ink);border-left:4px solid var(--
 .nophoto .ab-founder{grid-template-columns:1fr;max-width:820px;margin:0 auto}
 @media (max-width:1000px){.nophoto #inside .car .track{grid-template-columns:1fr 1fr}.nophoto .thr .inbox{border-left:0;border-top:1px solid var(--ink)}}
 @media (max-width:760px){.nophoto .hmark{min-height:340px;border-left:0;border-top:1px solid var(--ink)}.nophoto .hmark img{height:260px}.nophoto .inbox{padding:44px 20px}.nophoto #inside .car .track{grid-template-columns:1fr}.nav .logo .lmark{height:38px}}
+
+/* Birthday Bash hero without a photo: one full-width, centered block */
+.nophoto .thr.thr-solo{display:block;background:var(--tint)}
+.nophoto .thr-solo .copy{padding:88px var(--gut,48px) 96px;align-items:center;text-align:center;gap:22px;max-width:none}
+.nophoto .thr-solo .crumb{justify-content:center}
+.nophoto .thr-solo h1{font-size:clamp(56px,8vw,120px)}
+.nophoto .thr-solo .ld{max-width:620px;margin:0 auto;font-size:17px}
+.nophoto .thr-solo .buyrow{justify-content:center;margin-top:10px}
+.nophoto .thr-solo .pnote{margin:0}
+@media (max-width:760px){.nophoto .thr-solo .copy{padding:56px 20px 64px}}
