@@ -65,6 +65,16 @@
       "source": "/graduation",
       "destination": "/birthday",
       "permanent": false
+    },
+    {
+      "source": "/host-card",
+      "destination": "/about",
+      "permanent": false
+    },
+    {
+      "source": "/host-card.html",
+      "destination": "/about",
+      "permanent": false
     }
   ],
   "rewrites": [

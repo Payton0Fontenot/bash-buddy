@@ -441,7 +441,7 @@ p.draft{background:none;border:1px solid var(--ink);border-left:4px solid var(--
 .ab-quote{margin:6px 0;padding-left:22px;border-left:2px solid var(--pink);font-family:'Playfair Display',Georgia,serif;font-style:italic;font-size:clamp(22px,2.4vw,28px);line-height:1.35;color:var(--ink)}
 .ab-founder .ab-sign{font-family:'Playfair Display',Georgia,serif;font-style:italic;font-size:26px;color:var(--pink)}
 .ab-sign span{display:block;font-family:'Sora',sans-serif;font-style:normal;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--soft);margin-top:6px}
-.ab-vals{background:var(--tint);border-top:1px solid var(--ink);padding:80px 48px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,2fr);gap:56px;align-items:start}
+.ab-vals{background:#fff;border-top:1px solid var(--ink);padding:80px 48px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,2fr);gap:56px;align-items:start}
 .ab-vals h2{margin:0;font-size:clamp(32px,3.6vw,44px);line-height:1.1}
 .ab-vals .g{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:32px}
 .ab-vals .g div{border-top:1px solid var(--ink);padding-top:18px}
