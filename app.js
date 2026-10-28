@@ -118,7 +118,7 @@ list.appendChild(g);});
 }
 document.querySelectorAll('form[data-endpoint]').forEach(function(f){f.addEventListener('submit',function(ev){
 ev.preventDefault();
-var ep=f.getAttribute('data-endpoint')||(window.BBC||{}).formEndpoint,m=f.querySelector('.msg'),G=(window.BBC||{}).reserveForm;
+var ep=f.getAttribute('data-endpoint')||(window.BBC||{}).formEndpoint,m=f.querySelector('.msg'),G=(window.BBC||{})[f.getAttribute('data-gform')||'reserveForm'];
 if(f.hasAttribute('data-gform')&&G&&G.action){var fd=new FormData(f),body=new URLSearchParams();Object.keys(G.fields).forEach(function(k){var v=fd.get(k);if(v)body.append(G.fields[k],v);});
 var btn=f.querySelector('button[type=submit]');if(btn)btn.disabled=true;
 fetch(G.action,{method:'POST',mode:'no-cors',body:body}).then(function(){var done=f.parentNode.querySelector('.rsv-done');if(done){var n=String(fd.get('name')||'').trim(),s=done.querySelector('[data-first]');if(s&&n)s.textContent=', '+n;f.hidden=true;done.hidden=false;try{done.scrollIntoView({behavior:'smooth',block:'center'});}catch(e){}return;}f.reset();m.textContent=f.getAttribute('data-success')||'Thanks! We got it.';}).catch(function(){m.textContent='Something went wrong. Please try again.';}).then(function(){if(btn)btn.disabled=false;});return;}

@@ -15,5 +15,15 @@ window.BBC = {
       guests: "entry.753292370",       // Guest count
       price_shown: "entry.1271090736"  // Price shown
     }
+  },
+  // Contact page messages save to this Google Form (and its linked Sheet)
+  contactForm: {
+    action: "https://docs.google.com/forms/d/e/1FAIpQLSdwOkBXb_cGThPJ6dPsFgnlt2XnPoe8w6KO8yn78RUpdmI6lA/formResponse",
+    fields: {
+      name: "entry.542380894",     // Name
+      email: "entry.2138009265",   // Email
+      topic: "entry.1223670166",   // Topic
+      message: "entry.1142106067"  // Message
+    }
   }
 };
