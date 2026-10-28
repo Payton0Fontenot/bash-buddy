@@ -610,3 +610,11 @@ p.draft{background:none;border:1px solid var(--ink);border-left:4px solid var(--
 .nophoto .thr-solo .buyrow{justify-content:center;margin-top:10px}
 .nophoto .thr-solo .pnote{margin:0}
 @media (max-width:760px){.nophoto .thr-solo .copy{padding:56px 20px 64px}}
+
+/* About: "What goes into every box" as numbered cards on a pink band, so it reads apart from the founder letter */
+.ab-vals{background:#FCE8F2;grid-template-columns:1fr;gap:40px;text-align:center;counter-reset:val}
+.ab-vals h2{max-width:none}
+.ab-vals .g{gap:24px;text-align:left}
+.ab-vals .g div{counter-increment:val;background:#fff;border:1px solid var(--ink);padding:28px 28px 30px}
+.ab-vals .g div::before{content:"0" counter(val);display:block;font-family:'Playfair Display',Georgia,serif;font-style:italic;font-size:34px;line-height:1;color:var(--pink);margin-bottom:16px}
+.ab-vals h3{font-family:'Sora',system-ui,sans-serif;font-style:normal;font-weight:600;font-size:17px;letter-spacing:0}
