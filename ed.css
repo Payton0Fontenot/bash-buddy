@@ -561,3 +561,6 @@ p.draft{background:none;border:1px solid var(--ink);border-left:4px solid var(--
 @media (max-width:960px){.rsv-wrap{grid-template-columns:1fr;gap:40px;padding:56px 16px 64px}.rsv-card{padding:28px 20px}.rsv-inside{padding:56px 16px 64px}.rsv-grid{grid-template-columns:1fr 1fr}.rsv-grid>div{border-right:0;margin-right:0;border-bottom:1px solid #D9CCEB;padding:20px 12px 16px 0}.rsv-ihead{flex-direction:column}}
 @media (max-width:420px){.rsv-grid{grid-template-columns:1fr}.rsv-card .eform .rsv-opts{grid-template-columns:1fr}}
 @media (max-width:960px){.rsv-fx span:nth-child(-n+9),.rsv-fx span:nth-child(12){display:none}}
+/* Birthday Bash facts strip: three columns */
+.tpage .tgl{grid-template-columns:repeat(3,1fr)}
+@media (max-width:1000px) and (min-width:761px){.tpage .tgl{grid-template-columns:repeat(3,1fr)}.tpage .tgl>div:nth-child(n+2){border-left:1px solid var(--ink);padding-left:32px}.tpage .tgl>div:nth-child(n+3){border-top:0}}
