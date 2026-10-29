@@ -618,3 +618,20 @@ p.draft{background:none;border:1px solid var(--ink);border-left:4px solid var(--
 .ab-vals .g div{counter-increment:val;background:#fff;border:1px solid var(--ink);padding:28px 28px 30px}
 .ab-vals .g div::before{content:"0" counter(val);display:block;font-family:'Playfair Display',Georgia,serif;font-style:italic;font-size:34px;line-height:1;color:var(--pink);margin-bottom:16px}
 .ab-vals h3{font-family:'Sora',system-ui,sans-serif;font-style:normal;font-weight:600;font-size:17px;letter-spacing:0}
+
+/* Birthday Bash: theme line, "Picture the party" band, and We bring / You bring */
+.thr-solo .ld.theme{font-size:15px;color:#4A3B63;margin-top:-4px}
+.pic{background:var(--plum);color:#fff;border-top:1px solid var(--ink);padding:88px 48px;text-align:center;display:flex;flex-direction:column;align-items:center;gap:22px}
+.pic-eye{font-size:12px;letter-spacing:.18em;text-transform:uppercase;font-weight:600;color:#F7B6D6}
+.pic p{margin:0;max-width:820px;font-family:'Playfair Display',Georgia,serif;font-style:italic;font-size:clamp(22px,2.4vw,30px);line-height:1.5;color:#fff}
+.wbyb{border-top:1px solid var(--ink);padding-top:80px!important}
+@media (max-width:760px){.wbyb{padding-top:56px!important}}
+.wb-g{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px}
+.wb-g>div{border:1px solid var(--ink);padding:32px 32px 34px}
+.wb-we{background:var(--tint)}
+.wb-g h3{margin:0 0 14px;font-size:26px;font-style:italic}
+.wb-we h3{color:var(--pink)}
+.wb-g ul{list-style:none;margin:0;padding:0}
+.wb-g li{padding:11px 0;border-top:1px solid #D9CCEB;font-size:15px}
+.wb-keep{margin:22px 0 0;font-weight:600;font-size:15px;color:var(--ink)}
+@media (max-width:760px){.pic{padding:60px 20px}.wb-g{grid-template-columns:1fr}.wb-g>div{padding:26px 22px}}
