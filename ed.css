@@ -684,3 +684,73 @@ p.draft{background:none;border:1px solid var(--ink);border-left:4px solid var(--
 .ap-items{gap:2px 22px}
 .ap-how ol{grid-template-columns:1fr;gap:36px}
 }
+
+/* Site-wide About look: plum openers, pink contents blocks, plum closers */
+.ap .ap-acts .btn:not(.line),.ap .buyrow .btn{background:var(--pink);color:#fff}
+.ap-hero .btn:hover,.ap-end .btn:hover{background:#fff;color:var(--plum)}
+.ap-hero .btn.line{background:transparent;color:#fff;box-shadow:inset 0 0 0 1px #fff}
+.ap-hero .btn.line:hover{background:#fff;color:var(--plum)}
+.ap-hero.solo{grid-template-columns:1fr}
+.ap-hero.solo .copy{max-width:900px}
+.ap-hero .crumb,.ap-hero .crumb a{color:#C9B6E6}
+.ap-hero .crumb a:hover{color:#fff}
+.ap-hero .ap-tag{font-family:'Playfair Display',Georgia,serif;font-style:italic;font-size:clamp(20px,2vw,26px);color:#F7B6D6}
+.ap-hero .buyrow{color:#E6D9F5;margin-top:6px}
+.ap-hero .bprice{color:#fff}
+.ap-hero .pnote{margin:0;font-size:14px;color:#C9B6E6}
+.ap-mark{background:var(--tint);display:flex;align-items:center;justify-content:center;min-height:420px}
+.ap-mark img{height:260px;width:auto;max-width:70%}
+.ap-eye.pk{color:var(--pink)}
+.ap-acts{display:flex;flex-wrap:wrap;gap:12px;margin-top:6px}
+
+/* White feature split (home Birthday Bash) */
+.ap-feat{padding:96px 48px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:72px;align-items:center}
+.ap-feat .l{display:flex;flex-direction:column;gap:16px}
+.ap-feat h2{font-size:clamp(40px,5vw,72px)}
+.ap-tag{margin:0;font-family:'Playfair Display',Georgia,serif;font-style:italic;font-size:clamp(20px,2vw,26px);color:var(--pink)}
+.ap-feat .t{display:flex;flex-direction:column;align-items:flex-start;gap:16px;padding-left:28px;border-left:2px solid var(--pink)}
+.ap-feat .t>p{margin:0;font-size:16px;line-height:1.8;color:#4A3B63;max-width:48ch}
+.ap-feat .pnote{margin:0;font-size:14px;color:var(--soft)}
+.ap-link{font-size:13px;letter-spacing:.12em;text-transform:uppercase;font-weight:600;color:var(--ink);border-bottom:1px solid var(--ink);padding-bottom:4px}
+.ap-link:hover{color:var(--pink);border-color:var(--pink)}
+
+/* Three-up numbered rows */
+.ap-how.three{border-top:1px solid var(--ink)}
+.ap-feat+.ap-box,.ap-hero+.ap-how{border-top:0}
+.ap-how.three ol{grid-template-columns:repeat(3,minmax(0,1fr));gap:40px}
+
+/* Detail list (Birthday Bash) */
+.ap-detail{padding:96px 48px;display:grid;grid-template-columns:minmax(0,4fr) minmax(0,8fr);gap:72px;align-items:start}
+.ap-detail .l{display:flex;flex-direction:column;gap:18px}
+.ap-detail h2{margin:0;font-size:clamp(36px,4vw,58px)}
+.ap-detail .l p{margin:0;font-size:16px;line-height:1.75;color:#4A3B63;max-width:36ch}
+.ap-detail ul{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:36px 48px}
+.ap-detail li{border-top:1px solid var(--ink);padding-top:18px;display:flex;flex-direction:column;gap:8px}
+.ap-detail h3{margin:0;font-size:24px}
+.ap-detail li p{margin:0;font-size:15px;line-height:1.7;color:#4A3B63}
+
+/* Page headers on simple pages match the About opener */
+.ap .shophead{background:var(--plum);color:#fff;border-bottom:0;padding:72px 48px 64px;gap:16px}
+.ap .shophead .ap-eye{color:#F7B6D6}
+.ap .shophead h1{color:#fff;font-size:clamp(40px,4.6vw,68px);line-height:1.05}
+.ap .shophead h1 i{color:#F7B6D6}
+.ap .shophead p{color:#E6D9F5;font-size:clamp(16px,1.5vw,19px);max-width:52ch}
+
+/* Two-column body: heading on the left, content on the right */
+.ap-split{padding:96px 48px;display:grid;grid-template-columns:minmax(0,4fr) minmax(0,7fr);gap:72px;align-items:start}
+.ap-split .l{display:flex;flex-direction:column;align-items:flex-start;gap:18px}
+.ap-split h2{margin:0;font-size:clamp(34px,3.8vw,54px)}
+.ap-split .l p{margin:0;font-size:16px;line-height:1.75;color:#4A3B63;max-width:36ch}
+.ap-split.faq .l{position:sticky;top:32px}
+.ap-split .efaq{max-width:none}
+.ap-split .sgrid{max-width:none}
+.ap-split.cnote,.ap-split .cnote{gap:18px}
+
+@media (max-width:1000px){.ap-feat,.ap-detail,.ap-split{grid-template-columns:1fr;gap:44px}.ap-how.three ol{grid-template-columns:1fr}.ap-split.faq .l{position:static}}
+@media (max-width:760px){
+.ap-feat,.ap-detail,.ap-split{padding:64px 20px}
+.ap .shophead{padding:48px 20px 44px}
+.ap-mark{display:none}
+.ap-detail ul{grid-template-columns:1fr;gap:28px}
+.ap-feat .t{padding-left:20px}
+}
