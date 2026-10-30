@@ -833,5 +833,12 @@ p.draft{background:none;border:1px solid var(--ink);border-left:4px solid var(--
 @media (max-width:1000px){.ap-hero{grid-template-columns:1fr}.ap-art{padding:0 20px 48px}.ap-art img{width:min(320px,80%)}}
 .ap-hero.half{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
 .ap-hero.half .ap-art{padding:48px}
-.ap-hero.half .ap-art img{width:min(560px,100%)}
+.ap-hero.half .ap-art img{width:min(430px,82%)}
 @media (max-width:1000px){.ap-hero.half{grid-template-columns:1fr}.ap-hero.half .ap-art{padding:0 20px 48px}.ap-hero.half .ap-art img{width:min(340px,85%)}}
+
+/* Page header with an illustration on the right */
+.ap .shophead.has-art{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);align-items:center;gap:32px}
+.shophead.has-art .copy{display:flex;flex-direction:column;align-items:flex-start;gap:16px}
+.hd-art{display:flex;justify-content:center}
+.hd-art svg{width:min(240px,100%);height:auto;display:block}
+@media (max-width:760px){.ap .shophead.has-art{grid-template-columns:1fr}.hd-art{display:none}}
