@@ -862,3 +862,7 @@ p.draft{background:none;border:1px solid var(--ink);border-left:4px solid var(--
 .ap-slip .slipcard{padding:20px 34px 18px}
 .ap-slip li p{line-height:1.45}
 .ap-slip{padding:52px 48px}
+
+/* Italic is for emphasis only: product names and lists stay upright */
+.ap-items li:nth-child(even){font-style:normal}
+.ap-slip .hd b{font-style:normal}
