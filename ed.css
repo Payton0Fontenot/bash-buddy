@@ -842,3 +842,23 @@ p.draft{background:none;border:1px solid var(--ink);border-left:4px solid var(--
 .hd-art{display:flex;justify-content:center}
 .hd-art svg{width:min(240px,100%);height:auto;display:block}
 @media (max-width:760px){.ap .shophead.has-art{grid-template-columns:1fr}.hd-art{display:none}}
+/* Packing list: wider, bigger text, shorter section */
+.ap-slip{grid-template-columns:minmax(0,4fr) minmax(0,7fr);gap:48px;padding:64px 48px}
+.ap-slip .slipcard{padding:26px 36px 22px;transform:rotate(-.8deg)}
+.ap-slip .hd{padding-bottom:10px}
+.ap-slip .hd span{font-size:12px}
+.ap-slip .hd b{font-size:26px}
+.ap-slip li{padding:10px 0 10px 38px}
+.ap-slip li::before{top:15px;width:20px;height:20px}
+.ap-slip h3{font-size:24px;margin:0 0 2px}
+.ap-slip li p{font-size:16px;line-height:1.5}
+.ap-slip .ft{margin:12px 0 0;font-size:16px}
+@media (max-width:760px){.ap-slip{padding:56px 20px}.ap-slip .slipcard{padding:22px 18px 18px}.ap-slip h3{font-size:20px}.ap-slip li p,.ap-slip .ft{font-size:15px}}
+.ap-slip{padding:52px 48px}
+.ap-slip li{padding:8px 0 8px 38px}
+.ap-slip li::before{top:13px}
+.ap-slip h3{line-height:1.2}
+.ap-slip{padding:40px 48px}
+.ap-slip .slipcard{padding:20px 34px 18px}
+.ap-slip li p{line-height:1.45}
+.ap-slip{padding:52px 48px}
