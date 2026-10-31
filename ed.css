@@ -882,3 +882,6 @@ p.draft{background:none;border:1px solid var(--ink);border-left:4px solid var(--
 .ap-inc li span{font-size:18px;font-weight:600;line-height:1.3}
 @media (max-width:1000px){.ap-inc{grid-template-columns:1fr;gap:40px}.ap-inc.four ul{grid-template-columns:repeat(3,minmax(0,1fr))}}
 @media (max-width:760px){.ap-inc{padding:64px 20px}.ap-inc ul,.ap-inc.four ul{grid-template-columns:repeat(2,minmax(0,1fr))}.ap-inc li{padding:22px 12px 22px 0}.ap-inc li span{font-size:16px}}
+/* Keep the packing card inside the screen on phones */
+.ap-slip{overflow:hidden}
+@media (max-width:1000px){.ap-slip .slipcard{transform:none}}
