@@ -127,6 +127,11 @@ h1 i,h2 i,.ap-how li span{background:var(--deep);-webkit-background-clip:text;ba
 .ap-end.lt .btn.line{background:#fff;color:var(--ink);box-shadow:inset 0 0 0 1px var(--ink)}
 .ap-end.lt .btn.line:hover{background:var(--ink);color:#fff}
 
+/* Home opener shows the box illustration on foil (no white circle) */
+.ap-mark.ap-boxart{background:var(--foil)}
+.ap-mark.ap-boxart img{height:auto;width:min(400px,82%);max-width:none}
+@media (max-width:760px){.ap-mark.ap-boxart{display:flex;min-height:0;padding:36px 20px;border-left:0;border-top:1px solid var(--ink)}.ap-mark.ap-boxart img{width:min(300px,80%)}}
+
 /* Reserve page: holo foil opener with the form card */
 .rsv-hero{background:var(--foil);color:var(--ink)}
 .rsv-eye{color:var(--eye)}
@@ -153,3 +158,4 @@ main mark,.fill,.cnote .card b{color:var(--pink)}
 .efaq summary::after{color:#8A2BE2}
 .eform input:focus,.eform select:focus,.eform textarea:focus{outline-color:#8A2BE2}
 .eform input[type=checkbox],.eform input[type=radio]{accent-color:var(--pink)}
+.rsv-card legend .hint{font-family:'Sora',sans-serif;font-size:13px;font-weight:400;color:var(--soft)}
