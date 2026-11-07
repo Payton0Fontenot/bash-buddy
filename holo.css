@@ -1,0 +1,134 @@
+/* Holo Bold: bolder Playfair, mostly white pages, holo foil feature panels and rainbow ribbons.
+   Loaded after ed.css on every page except reserve.html. */
+:root{
+  --ink:#1E1433;--pink:#D6006F;--soft:#5E5278;
+  --body:#4A3D66;--eye:#B0005C;
+  --ribbon:linear-gradient(90deg,#FF5FA8,#FF9A6B,#C77DFF,#7C8CFF,#4FC3F7);
+  --ribbon-v:linear-gradient(180deg,#FF5FA8,#FF9A6B,#C77DFF,#7C8CFF,#4FC3F7);
+  --foil:radial-gradient(circle at 22% 28%,rgba(255,255,255,.85),rgba(255,255,255,0) 38%),radial-gradient(circle at 78% 78%,rgba(255,255,255,.55),rgba(255,255,255,0) 34%),linear-gradient(115deg,#FFB3D6 0%,#FFCBA8 22%,#E6BFFF 44%,#B3C2FF 64%,#A6E4FF 82%,#FFB3D6 100%);
+  --deep:linear-gradient(100deg,#D6006F 0%,#E0482A 32%,#8A2BE2 64%,#2F6BE0 100%);
+  --light:linear-gradient(100deg,#FF9CC9 0%,#FFCBA8 32%,#CDA6FF 64%,#A6E4FF 100%);
+}
+::selection{background:#E6BFFF;color:var(--ink)}
+
+/* Type: same Playfair, set bolder */
+h1,h2,h3{font-weight:700}
+.logo{font-weight:600}
+h1 i,h2 i,h3 i{font-weight:600}
+.ap-tag,.ap-hero .ap-tag{font-weight:600;color:var(--pink)}
+.ap-time .when,.ap-slip .hd b,.efaq summary,.bdlg h2{font-weight:700}
+.ap-trio b,.ap-how li span{font-weight:600}
+
+/* Foil gradient on italic emphasis in headings (white sections) */
+h1 i,h2 i,.ap-how li span{background:var(--deep);-webkit-background-clip:text;background-clip:text;color:transparent!important;-webkit-text-fill-color:transparent;padding-right:.06em}
+
+/* Logo */
+.nav .logo{color:var(--pink)}
+.nav .logo .lmark{height:44px}
+.foot .logo .lmark{height:38px}
+
+/* Announcement bar and footer: ink with rainbow ribbon */
+.announce{background:var(--ink);color:#fff;border-bottom:4px solid transparent;border-image:var(--ribbon) 1}
+.foot{border-top:5px solid transparent;border-image:var(--ribbon) 1}
+.nav .links a:hover,.nav .nr a.pill:hover,.foot a:hover{color:var(--pink)}
+.nav .nr a.pill{color:var(--pink)}
+
+/* Buttons */
+.btn,.btn.dk,.ap .ap-acts .btn:not(.line),.ap .buyrow .btn,.ap-inc .btn,.ap-box .btn{background:var(--pink);color:#fff}
+.btn:hover,.btn.dk:hover,.ap-hero .btn:hover,.ap-inc .btn:hover,.ap-box .btn:hover,.ap-end.lt .btn:not(.line):hover{background:var(--ink);color:#fff}
+.btn.line,.ap-hero .btn.line{background:#fff;color:var(--ink);box-shadow:inset 0 0 0 1px var(--ink)}
+.btn.line:hover,.ap-hero .btn.line:hover{background:var(--ink);color:#fff}
+
+/* Openers: white, with a holo foil panel beside them */
+.ap-hero{background:#fff;color:var(--ink);border-bottom:1px solid var(--ink)}
+.ap-hero h1{color:var(--ink)}
+.ap-hero .ap-eye,.ap .shophead .ap-eye{color:var(--eye)}
+.ap-hero p,.ap-hero .buyrow{color:var(--body)}
+.ap-hero .bprice,.ap-hero .ap-sign{color:var(--ink)}
+.ap-sign span,.ap-hero .pnote,.ap-hero .crumb,.ap-hero .crumb a{color:var(--soft)}
+.ap-hero .crumb a:hover{color:var(--pink)}
+.ap-mark{background:var(--foil);border-left:1px solid var(--ink)}
+.ap-mark img{height:190px;width:auto;max-width:none;background:#fff;border-radius:50%;padding:56px;box-sizing:content-box}
+.ap-hero .ap-art{background:var(--foil);border-left:1px solid var(--ink);align-self:stretch}
+.ap-hero .ap-photo{border-left:1px solid var(--ink)}
+@media (max-width:1000px){.ap-hero .ap-art{border-left:0;border-top:1px solid var(--ink);padding:48px 20px}}
+
+.ap .shophead{background:#fff;color:var(--ink);border-bottom:1px solid var(--ink)}
+.ap .shophead h1{color:var(--ink)}
+.ap .shophead p{color:var(--body)}
+.ap .shophead.has-art .hd-art{align-self:stretch;align-items:center;background:var(--foil);padding:24px}
+
+/* Ribbon rules beside feature text */
+.ap-feat .t,.ap-story .t{border-left:3px solid transparent;border-image:var(--ribbon-v) 1}
+.ap-eye.pk{color:var(--eye)}
+.ap-link:hover{color:var(--pink);border-color:var(--pink)}
+
+/* What goes into every box: white with rainbow icons */
+.ap-inc{background:#fff;color:var(--ink);border-top:1px solid var(--ink)}
+.ap-inc .ap-eye{color:var(--eye)}
+.ap-inc h2{color:var(--ink)}
+.ap-inc .l p{color:var(--body)}
+.ap-inc ul{border-top:3px solid transparent;border-image:var(--ribbon) 1}
+.ap-inc li{border-bottom:1px solid #E4E0EE}
+.ap-inc li svg{stroke:#D6006F}
+.ap-inc li:nth-child(5n+2) svg{stroke:#E0482A}
+.ap-inc li:nth-child(5n+3) svg{stroke:#8A2BE2}
+.ap-inc li:nth-child(5n+4) svg{stroke:#4F5BD5}
+.ap-inc li:nth-child(5n) svg{stroke:#1F86C9}
+
+/* Three statement words: white, each its own color */
+.ap-trio{background:#fff}
+.ap-trio .g>div{border-color:#E4E0EE}
+.ap-trio b{color:#D6006F}
+.ap-trio .g>div:nth-child(2) b{color:#C2410C}
+.ap-trio .g>div:nth-child(3) b{color:#7A22D6}
+.ap-trio p{color:var(--body)}
+
+/* Birthday timeline: rainbow line */
+.ap-time ol::before{background:var(--ribbon);opacity:1;height:3px}
+.ap-time li::before{background:#D6006F}
+.ap-time li:nth-child(2)::before{background:#E0482A}
+.ap-time li:nth-child(3)::before{background:#8A2BE2}
+.ap-time p{color:var(--body)}
+@media (max-width:760px){.ap-time ol::before{background:var(--ribbon-v);width:3px;height:auto}}
+
+/* Packing list: white card on holo foil */
+.ap-slip{background:var(--foil);color:var(--ink);border-top:1px solid var(--ink);border-bottom:1px solid var(--ink)}
+.ap-slip .ap-eye{color:var(--eye)}
+.ap-slip h2{color:var(--ink)}
+.ap-slip .l p{color:#3A2C57}
+.ap-slip .slipcard{box-shadow:0 0 0 1px var(--ink)}
+.ap-slip .hd span{color:var(--eye)}
+.ap-slip li{border-bottom-color:#E4E0EE}
+.ap-slip li::before{border-color:#D6006F;background:linear-gradient(#D6006F,#D6006F) center/8px 8px no-repeat}
+.ap-slip li:nth-child(5n+2)::before{border-color:#E0482A;background:linear-gradient(#E0482A,#E0482A) center/8px 8px no-repeat}
+.ap-slip li:nth-child(5n+3)::before{border-color:#8A2BE2;background:linear-gradient(#8A2BE2,#8A2BE2) center/8px 8px no-repeat}
+.ap-slip li:nth-child(5n+4)::before{border-color:#4F5BD5;background:linear-gradient(#4F5BD5,#4F5BD5) center/8px 8px no-repeat}
+.ap-slip li:nth-child(5n)::before{border-color:#1F86C9;background:linear-gradient(#1F86C9,#1F86C9) center/8px 8px no-repeat}
+
+/* About statement block: holo foil */
+.ap-box{background:var(--foil);color:var(--ink);border-top:1px solid var(--ink);border-bottom:1px solid var(--ink)}
+.ap-box .ap-eye{color:var(--eye)}
+.ap-box h2{color:var(--ink)}
+.ap-box p{color:#3A2C57}
+.ap-items li,.ap-items li:nth-child(even){color:var(--ink)}
+
+/* Closers: ink with light foil italics, or white */
+.ap-end{background:var(--ink);color:#fff;border-top:5px solid transparent;border-image:var(--ribbon) 1}
+.ap-end h2{color:#fff}
+.ap-end h2 i{background:var(--light);-webkit-background-clip:text;background-clip:text}
+.ap-end .btn.line{background:transparent;color:#fff;box-shadow:inset 0 0 0 1px #fff}
+.ap-end .btn.line:hover{background:#fff;color:var(--ink)}
+.ap-end .btn:not(.line):hover{background:#fff;color:var(--ink)}
+.ap-end.lt{background:#fff;color:var(--ink);border-top:1px solid var(--ink);border-image:none}
+.ap-end.lt h2{color:var(--ink)}
+.ap-end.lt h2 i{background:var(--deep);-webkit-background-clip:text;background-clip:text}
+.ap-end.lt .btn.line{background:#fff;color:var(--ink);box-shadow:inset 0 0 0 1px var(--ink)}
+.ap-end.lt .btn.line:hover{background:var(--ink);color:#fff}
+
+/* Body copy and small details */
+.ap-story p,.ap-feat .t>p,.ap-how p,.ap-split .l p,.ap-detail .l p,.ap-detail li p{color:var(--body)}
+main mark,.fill,.cnote .card b{color:var(--pink)}
+.efaq summary::after{color:#8A2BE2}
+.eform input:focus,.eform select:focus,.eform textarea:focus{outline-color:#8A2BE2}
+.eform input[type=checkbox],.eform input[type=radio]{accent-color:var(--pink)}
