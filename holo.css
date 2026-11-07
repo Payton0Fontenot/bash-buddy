@@ -11,7 +11,8 @@
 }
 ::selection{background:#E6BFFF;color:var(--ink)}
 
-/* Type: same Playfair, set bolder */
+/* Type: same Playfair, set bolder. No joined letters (the bold fi and fl look odd). */
+body{font-variant-ligatures:no-common-ligatures}
 h1,h2,h3{font-weight:700}
 .logo{font-weight:600}
 h1 i,h2 i,h3 i{font-weight:600}
