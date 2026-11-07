@@ -13,7 +13,8 @@
 
 /* Type: same Playfair, set bolder. No joined letters (the bold fi and fl look odd). */
 body{font-variant-ligatures:no-common-ligatures}
-h1,h2,h3{font-weight:700}
+h1,h2,h3{font-weight:700;letter-spacing:.03em}
+.ap-trio b,.ap-time .when,.ap-slip .hd b,.efaq summary,.ap-items li,.ap-items li:nth-child(even),.rsv-perks .n{letter-spacing:.03em}
 .logo{font-weight:600}
 h1 i,h2 i,h3 i{font-weight:600}
 .ap-tag,.ap-hero .ap-tag{font-weight:600;color:var(--pink)}
