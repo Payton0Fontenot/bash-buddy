@@ -158,4 +158,3 @@ main mark,.fill,.cnote .card b{color:var(--pink)}
 .efaq summary::after{color:#8A2BE2}
 .eform input:focus,.eform select:focus,.eform textarea:focus{outline-color:#8A2BE2}
 .eform input[type=checkbox],.eform input[type=radio]{accent-color:var(--pink)}
-.rsv-card legend .hint{font-family:'Sora',sans-serif;font-size:13px;font-weight:400;color:var(--soft)}
