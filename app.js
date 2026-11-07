@@ -249,13 +249,10 @@ sync();render();
 if(/\/cart(\.html)?$/.test(location.pathname))openCart();
 })();
 
-// Price test: each visitor sees $40 or $55 and keeps it on return visits. Add ?price=40 or ?price=55 to preview one.
+// Price: the Birthday Bash box is $59 for everyone.
 (function(){
-var ok=['40','55'],v=null,q=(location.search.match(/[?&]price=(40|55)\b/)||[])[1],p=(location.pathname.match(/^\/reserve\/(40|55)\b/)||[])[1];
-try{v=localStorage.getItem('bbc_price');}catch(e){}
-if(q)v=q;else if(p)v=p;
-if(ok.indexOf(v)<0)v=Math.random()<0.5?'40':'55';
-try{localStorage.setItem('bbc_price',v);}catch(e){}
+var v='59';
+try{localStorage.removeItem('bbc_price');}catch(e){}
 document.querySelectorAll('[data-price]').forEach(function(el){el.textContent='$'+v;});
 document.querySelectorAll('a[data-reserve]').forEach(function(a){a.href='/reserve/'+v;});
 document.querySelectorAll('#reserve input[name=price_shown]').forEach(function(i){i.value='$'+v;i.setAttribute('value','$'+v);});
