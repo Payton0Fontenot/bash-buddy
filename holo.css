@@ -167,3 +167,5 @@ main mark,.fill,.cnote .card b{color:var(--pink)}
 .ap-feat .bprice{font-size:52px}
 .ap-feat .buyrow .btn{font-size:16px;padding:22px 42px}
 @media (max-width:760px){.ap-feat .bprice{font-size:46px}.ap-feat .buyrow .btn{font-size:15px;padding:20px 32px}}
+/* Join the list: one combined "Get first dibs." headline beside the form */
+.ap-split .l h1{margin:0;font-size:clamp(40px,4.6vw,68px);line-height:1.05;color:var(--ink)}
