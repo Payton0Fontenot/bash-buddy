@@ -16,6 +16,15 @@ window.BBC = {
       price_shown: "entry.1271090736"  // Price shown
     }
   },
+  // "Join The Party!" email list signups save to this Google Form (and its linked Sheet)
+  signupForm: {
+    action: "https://docs.google.com/forms/d/e/1FAIpQLSd_6Exbm6DE2dFiN3TFRj4WnO0awzPrx7Vq3b5ep2FuZQ1LVQ/formResponse",
+    fields: {
+      email: "entry.1271090736",   // Email address
+      themes: "entry.893303035",   // Which themes should we make next? (checkboxes with Other)
+      where: "entry.753292370"     // Where will you host? (multiple choice with Other)
+    }
+  },
   // Contact page messages save to this Google Form (and its linked Sheet)
   contactForm: {
     action: "https://docs.google.com/forms/d/e/1FAIpQLSdwOkBXb_cGThPJ6dPsFgnlt2XnPoe8w6KO8yn78RUpdmI6lA/formResponse",
