@@ -136,7 +136,7 @@ h1 i,h2 i,.ap-how li span{background:var(--deep);-webkit-background-clip:text;ba
 /* Reserve page: holo foil opener with the form card */
 .rsv-hero{background:var(--foil);color:var(--ink)}
 .rsv-eye{color:var(--eye)}
-.rsv-copy h1{color:var(--ink)}
+.rsv-copy h1{color:var(--ink);margin-bottom:34px}
 .rsv-lead{color:#3A2C57}
 .rsv-perks,.rsv-perks li{border-color:rgba(30,20,51,.22)}
 .rsv-perks .n{color:var(--pink);font-weight:600}
