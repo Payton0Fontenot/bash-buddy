@@ -163,3 +163,7 @@ main mark,.fill,.cnote .card b{color:var(--pink)}
 .efaq summary::after{color:#8A2BE2}
 .eform input:focus,.eform select:focus,.eform textarea:focus{outline-color:#8A2BE2}
 .eform input[type=checkbox],.eform input[type=radio]{accent-color:var(--pink)}
+/* Home "Our first box": bigger price and Reserve button */
+.ap-feat .bprice{font-size:52px}
+.ap-feat .buyrow .btn{font-size:16px;padding:22px 42px}
+@media (max-width:760px){.ap-feat .bprice{font-size:46px}.ap-feat .buyrow .btn{font-size:15px;padding:20px 32px}}
