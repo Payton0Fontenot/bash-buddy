@@ -132,6 +132,10 @@ h1 i,h2 i,.ap-how li span{background:var(--deep);-webkit-background-clip:text;ba
 .ap-mark.ap-boxart{background:var(--foil)}
 .ap-mark.ap-boxart img{height:auto;width:min(400px,82%);max-width:none}
 @media (max-width:760px){.ap-mark.ap-boxart{display:flex;min-height:0;padding:36px 20px;border-left:0;border-top:1px solid var(--ink)}.ap-mark.ap-boxart img{width:min(300px,80%)}}
+/* Home hero: the Confetti B logo on its own */
+.ap-mark.ap-logoart{background:var(--foil)}
+.ap-mark.ap-logoart img{height:auto;width:min(250px,55%);max-width:none}
+@media (max-width:760px){.ap-mark.ap-logoart{display:flex;min-height:0;padding:44px 20px;border-left:0;border-top:1px solid var(--ink)}.ap-mark.ap-logoart img{width:min(170px,45%)}}
 
 /* Reserve page: holo foil opener with the form card */
 .rsv-hero{background:var(--foil);color:var(--ink)}
