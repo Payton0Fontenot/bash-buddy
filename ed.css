@@ -842,26 +842,28 @@ p.draft{background:none;border:1px solid var(--ink);border-left:4px solid var(--
 .hd-art{display:flex;justify-content:center}
 .hd-art svg{width:min(240px,100%);height:auto;display:block}
 @media (max-width:760px){.ap .shophead.has-art{grid-template-columns:1fr}.hd-art{display:none}}
-/* Packing list: wider, bigger text, shorter section */
-.ap-slip{grid-template-columns:minmax(0,4fr) minmax(0,7fr);gap:48px;padding:64px 48px}
-.ap-slip .slipcard{padding:26px 36px 22px;transform:rotate(-.8deg)}
+/* Packing list: wider, bigger text, shorter section (desktop), stacked on tablets and phones */
+.ap-slip{grid-template-columns:minmax(0,4fr) minmax(0,7fr);gap:48px;padding:52px 48px;overflow:hidden}
+.ap-slip .slipcard{padding:20px 34px 18px;transform:rotate(-.8deg)}
 .ap-slip .hd{padding-bottom:10px}
 .ap-slip .hd span{font-size:12px}
 .ap-slip .hd b{font-size:26px}
-.ap-slip li{padding:10px 0 10px 38px}
-.ap-slip li::before{top:15px;width:20px;height:20px}
-.ap-slip h3{font-size:24px;margin:0 0 2px}
-.ap-slip li p{font-size:16px;line-height:1.5}
-.ap-slip .ft{margin:12px 0 0;font-size:16px}
-@media (max-width:760px){.ap-slip{padding:56px 20px}.ap-slip .slipcard{padding:22px 18px 18px}.ap-slip h3{font-size:20px}.ap-slip li p,.ap-slip .ft{font-size:15px}}
-.ap-slip{padding:52px 48px}
 .ap-slip li{padding:8px 0 8px 38px}
-.ap-slip li::before{top:13px}
-.ap-slip h3{line-height:1.2}
-.ap-slip{padding:40px 48px}
-.ap-slip .slipcard{padding:20px 34px 18px}
-.ap-slip li p{line-height:1.45}
-.ap-slip{padding:52px 48px}
+.ap-slip li::before{top:13px;width:20px;height:20px}
+.ap-slip h3{font-size:24px;line-height:1.2;margin:0 0 2px}
+.ap-slip li p{font-size:16px;line-height:1.45}
+.ap-slip .ft{margin:12px 0 0;font-size:16px}
+@media (max-width:1000px){.ap-slip{grid-template-columns:1fr;gap:32px}.ap-slip .slipcard{transform:none}}
+@media (max-width:760px){
+.ap-slip{padding:48px 16px;gap:24px}
+.ap-slip .slipcard{padding:20px 16px 16px}
+.ap-slip .hd{flex-wrap:wrap;gap:4px 12px}
+.ap-slip .hd b{font-size:22px}
+.ap-slip li{padding:12px 0 12px 32px}
+.ap-slip li::before{top:15px;width:18px;height:18px}
+.ap-slip h3{font-size:19px;overflow-wrap:break-word}
+.ap-slip li p,.ap-slip .ft{font-size:15px;line-height:1.5}
+}
 
 /* Italic is for emphasis only: product names and lists stay upright */
 .ap-items li:nth-child(even){font-style:normal}
@@ -882,6 +884,3 @@ p.draft{background:none;border:1px solid var(--ink);border-left:4px solid var(--
 .ap-inc li span{font-size:18px;font-weight:600;line-height:1.3}
 @media (max-width:1000px){.ap-inc{grid-template-columns:1fr;gap:40px}.ap-inc.four ul{grid-template-columns:repeat(3,minmax(0,1fr))}}
 @media (max-width:760px){.ap-inc{padding:64px 20px}.ap-inc ul,.ap-inc.four ul{grid-template-columns:repeat(2,minmax(0,1fr))}.ap-inc li{padding:22px 12px 22px 0}.ap-inc li span{font-size:16px}}
-/* Keep the packing card inside the screen on phones */
-.ap-slip{overflow:hidden}
-@media (max-width:1000px){.ap-slip .slipcard{transform:none}}
