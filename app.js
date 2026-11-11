@@ -257,3 +257,19 @@ document.querySelectorAll('[data-price]').forEach(function(el){el.textContent='$
 document.querySelectorAll('a[data-reserve]').forEach(function(a){a.href='/reserve/'+v;});
 document.querySelectorAll('#reserve input[name=price_shown]').forEach(function(i){i.value='$'+v;i.setAttribute('value','$'+v);});
 })();
+
+// Birthday Bash options: fringe color and Crowd Favorite edition.
+// The price never changes with these picks; it stays $59 (set above).
+(function(){
+var C=['Blue','Pink','Black','Purple'],G=['Birthday Edition','Kids Edition'];
+function pick(root,name,list,dflt){var i=root.querySelector('input[name='+name+']:checked');return i&&list.indexOf(i.value)>-1?i.value:dflt;}
+var b=document.querySelector('[data-build]');
+if(b){var upd=function(){var c=pick(b,'color',C,'Blue'),g=pick(b,'game',G,'Birthday Edition');
+b.querySelectorAll('[data-pick-color]').forEach(function(e){e.textContent=c;});
+b.querySelectorAll('[data-pick-game]').forEach(function(e){e.textContent='Crowd Favorite: '+g;});
+var q='?color='+encodeURIComponent(c)+'&game='+encodeURIComponent(g);
+document.querySelectorAll('a[data-reserve]').forEach(function(a){a.href=a.getAttribute('href').split('?')[0]+q;});};
+b.addEventListener('change',upd);upd();}
+var f=document.getElementById('reserve');
+if(f){var p=new URLSearchParams(location.search),set=function(name,list){var v=p.get(name);if(list.indexOf(v)<0)return;f.querySelectorAll('input[name='+name+']').forEach(function(i){i.checked=(i.value===v);});};set('color',C);set('game',G);}
+})();

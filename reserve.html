@@ -37,6 +37,8 @@
 <div class="field"><label for="name">First name</label><input id="name" name="name" type="text" autocomplete="given-name" required></div>
 <div class="field"><label for="email">Email address</label><input id="email" name="email" type="email" autocomplete="email" required placeholder="you@example.com"></div>
 <div class="field"><label for="party_date">When is the party?</label><input id="party_date" name="party_date" type="date" min="2027-01-01"><span class="hint">Not sure yet? Leave it blank.</span></div>
+<fieldset><legend>Fringe color</legend><div class="opts rsv-opts"><label><input type="radio" name="color" value="Blue" checked>Blue</label><label><input type="radio" name="color" value="Pink">Pink</label><label><input type="radio" name="color" value="Black">Black</label><label><input type="radio" name="color" value="Purple">Purple</label></div></fieldset>
+<fieldset><legend>Crowd Favorite game</legend><div class="opts rsv-opts"><label><input type="radio" name="game" value="Birthday Edition" checked>Birthday Edition</label><label><input type="radio" name="game" value="Kids Edition">Kids Edition</label></div></fieldset>
 <fieldset><legend>About how many guests?</legend><div class="opts rsv-opts"><label><input type="radio" name="guests" value="Under 6">Under 6</label><label><input type="radio" name="guests" value="6 to 10">6 to 10</label><label><input type="radio" name="guests" value="11 to 20">11 to 20</label><label><input type="radio" name="guests" value="More than 20">More than 20</label></div></fieldset>
 <div><button class="btn dk rsv-btn" type="submit">Save my spot</button></div>
 <p class="msg" id="reserve-msg" role="status" aria-live="polite"></p>
