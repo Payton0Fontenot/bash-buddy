@@ -13,6 +13,8 @@ window.BBC = {
       email: "entry.893303035",        // Email
       party_date: "entry.1631771281",  // Party date
       guests: "entry.753292370",       // Guest count
+      color: "entry.1229270002",       // Fringe color
+      game: "entry.484802105",         // Crowd Favorite game
       price_shown: "entry.1271090736"  // Price shown
     }
   },
